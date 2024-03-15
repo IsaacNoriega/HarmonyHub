@@ -1,5 +1,6 @@
 import { Router } from "express";
 import userController from "../controllers/user.controller";
+import hashPassword from "../utils/hash-password";
 
 const router = Router();
 
@@ -8,8 +9,6 @@ router.get("/signup", (req, res) => {
 
 });
 
-router.post('/signup', userController.signUp);
-
-
+router.post("/signup", userController.signUp);
 
 export default router;

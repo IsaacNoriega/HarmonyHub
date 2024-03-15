@@ -1,6 +1,7 @@
 import express,{ Router } from "express";
 import user from './users';
 
+
 const router = Router();
 
 router.use(express.json());
