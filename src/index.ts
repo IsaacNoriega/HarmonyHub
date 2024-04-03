@@ -6,6 +6,10 @@ import path from 'path';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
 
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import swaggerConfig from '../swagger.config.json';
+
 dotenv.config();
 
 const port = process.env.PORT || 3000;
@@ -20,6 +24,13 @@ app.set('views','./src/views')
 
 app.use('/assets',express.static(path.join(__dirname,'public')));
 app.use(routes);
+
+
+//Swagger
+const swaggerDocs = swaggerJSDoc(swaggerConfig);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+
 
 console.log(db_url);
 mongoose.connect(db_url).then(() => {

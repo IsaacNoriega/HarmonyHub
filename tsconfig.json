@@ -4,7 +4,8 @@
         "outDir": "./dist",
         "noImplicitAny": true,
         "module": "NodeNext",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "resolveJsonModule": true
     },
     "include": [
         "src/**/*.ts"

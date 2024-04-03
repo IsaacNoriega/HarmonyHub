@@ -1,0 +1,17 @@
+{
+    "swaggerDefinition": {
+        "openapi": "3.1.0",
+        "info": {
+            "version": "1.0.0",
+            "title": "Harmony Hub Documentation",
+            "description": "here you can find the documentation for the Harmony Hub project"
+        },
+        "servers": [
+            {
+                "url": "http://localhost:3000",
+                "description": "Local Server"
+            }
+        ]
+    },
+    "apis": ["src/**/*.ts"]
+}
