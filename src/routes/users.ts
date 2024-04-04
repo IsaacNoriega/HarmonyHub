@@ -1,18 +1,19 @@
-import { Router } from "express";
+import { Router , Request, Response} from "express";
 import userController from "../controllers/user.controller";
 import hashPassword from "../utils/hash-password";
-const router = Router();
-
+import uploadMiddleware from "../middlewares/upload-s3";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-
 import swaggerConfig from '../../swagger.config.json';
+
+const router = Router();
+
+router.post("/upload/:id", uploadMiddleware.single('Foto'), userController.userImage);
+
 
 router.get("/signup", (req, res) => {
     res.render('register');
-
 });
-
 
 /**
  * @swagger
@@ -24,7 +25,6 @@ router.get("/signup", (req, res) => {
  */
 router.get("/login", (req, res) => {
     res.render('login');
-
 });
 
 
