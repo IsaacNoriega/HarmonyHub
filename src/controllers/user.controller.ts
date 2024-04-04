@@ -4,6 +4,32 @@ import jwt from 'jsonwebtoken';
 import hashPassword from "../utils/hash-password";
 import User from '../models/user.model';
 
+//Requerimentos para Multer
+import { File } from "./../types/file";
+import multer, {FileFilterCallback} from "multer";
+import s3Storage from "multer-s3";
+
+const storage = multer.diskStorage({
+    filename : ( req , file , cb ) => {
+        cb(null , file.originalname);
+    },
+    destination : ( req, file , cb ) => {
+        cb(null, process.env.UPLOAD_FOLDER);
+    }
+});
+
+const fileFilter = ( req : Request , file : File , cb : FileFilterCallback)=>{
+    const isValid = file.mimetype.startsWith('image/');
+    cb(null , isValid);
+};
+
+const upload = multer({
+    storage,
+    fileFilter
+})
+
+
+
 class UsersController {
 
     //Post para hacer login
@@ -47,6 +73,20 @@ class UsersController {
             res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong');        
         });
     }
+
+    userImage(req: Request , res: Response) : void {
+        const userId = req.params.id;
+        const fileName = req.file.originalname;
+        const imagePath = `uploads/users/${userId}/images/${fileName}`;
+
+        User.findByIdAndUpdate(userId , {$set : { image : imagePath }}).then(response =>{
+            res.send('Uploaded').status(ResponseStatus.SUCCESS);
+        }).catch( e => {
+            res.send('Something went wrong').status(ResponseStatus.BAD_REQUEST);
+        })
+    }
+
+
 }
 
 export default new UsersController();
