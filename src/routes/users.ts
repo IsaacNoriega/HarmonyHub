@@ -8,6 +8,32 @@ import swaggerConfig from '../../swagger.config.json';
 
 const router = Router();
 
+/**
+ * @swagger
+ * /upload/{id}:
+ *   post:
+ *     summary: Upload image to User Profile
+ *     description: Allows a user to upload an image for their profile.
+ *     tags: [User]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: User ID
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *       - in: formData
+ *         name: Foto
+ *         type: file
+ *         required: true
+ *         description: Image to upload for the profile
+ *     responses:
+ *       200:
+ *         description: Image uploaded successfully
+ *       400:
+ *         description: Error uploading the image
+ */
 router.post("/upload/:id", uploadMiddleware.single('Foto'), userController.userImage);
 
 
