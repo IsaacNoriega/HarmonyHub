@@ -39,13 +39,25 @@ class UsersController {
             password: req.body.password
         }).then(response => {
             if(response){
-                const data = {
+                const dataToken = {
                     id: response._id,
                     name: response.name,
                     email: response.email,
                     password: response.password
                 }
+                const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
                 res.status(ResponseStatus.SUCCESS).send('Login succeeded');
+                jwt.verify(token, process.env.TOKEN_KEY || '', (err, decoded) => {
+                    if (err) {
+                        console.error('Error al decodificar el token:', err.message);
+
+                    } else if (decoded) {
+                        console.log('Decodificado correctamente:', decoded);
+                        res.status(ResponseStatus.SUCCESS).redirect('/home?token=' + token);
+                    } else {
+                        console.error('El token no pudo ser decodificado');
+                    }
+                });
 
 
             } else{

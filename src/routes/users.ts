@@ -5,6 +5,7 @@ import uploadMiddleware from "../middlewares/upload-s3";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from '../../swagger.config.json';
+import authMiddlweare from '../middlewares/auth.middleware';
 
 const router = Router();
 
@@ -56,7 +57,7 @@ router.get("/login", (req, res) => {
 
 
 router.post('/signup', userController.signUp);
-router.post('/login', userController.login);
+router.post('/login',authMiddlweare, userController.login);
 
 
 
