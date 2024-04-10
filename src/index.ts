@@ -1,4 +1,5 @@
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import routes from './routes/index'
 import mongoose from 'mongoose';
@@ -10,7 +11,6 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from '../swagger.config.json';
 
-dotenv.config();
 
 const port = process.env.PORT || 3000;
 const db_url = process.env.URLDB || 'mongodb+srv://mateeldemoledor:hola123@cluster0.ztfvxtn.mongodb.net/HarmonyHub?retryWrites=true&w=majority';
