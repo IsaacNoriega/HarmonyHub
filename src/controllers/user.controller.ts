@@ -36,7 +36,7 @@ class UsersController {
     login(req: Request, res: Response): void {
         User.findOne({
             email: req.body.email,
-            password: req.body.password
+            password: hashPassword(req.body.password)
         }).then(response => {
             if(response){
                 const dataToken = {
@@ -45,23 +45,14 @@ class UsersController {
                     email: response.email,
                     password: response.password
                 }
+                console.log(dataToken);
+                console.log(process.env.TOKEN_KEY)
                 const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
-                res.status(ResponseStatus.SUCCESS).send('Login succeeded');
-                jwt.verify(token, process.env.TOKEN_KEY || '', (err, decoded) => {
-                    if (err) {
-                        console.error('Error al decodificar el token:', err.message);
-
-                    } else if (decoded) {
-                        console.log('Decodificado correctamente:', decoded);
-                        res.status(ResponseStatus.SUCCESS).redirect('/home?token=' + token);
-                    } else {
-                        console.error('El token no pudo ser decodificado');
-                    }
-                });
-
+                res.redirect('/home?t='+token);
 
             } else{
                 res.status(ResponseStatus.UNAUTHTENTICATED).send('user not authenticated');
+                console.log('no hay');
             }
             
         }).catch(e => {
@@ -73,6 +64,7 @@ class UsersController {
     //Post para crear usuario
     signUp(req: Request, res: Response): void {
         //Datos del usuario
+        console.log(req.body.password);
         const data = {
             name : req.body.name,
             email : req.body.email,

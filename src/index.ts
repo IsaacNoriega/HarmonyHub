@@ -6,7 +6,8 @@ import mongoose from 'mongoose';
 import path from 'path';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
-
+import passport from 'passport';
+import session from 'express-session';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from '../swagger.config.json';
@@ -18,9 +19,17 @@ const db_url = process.env.URLDB || 'mongodb+srv://mateeldemoledor:hola123@clust
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
-app.set('views','./src/views')
+app.set('views','./src/views');
+app.use(session({
+    secret: process.env.SECRET_KEY, 
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/assets',express.static(path.join(__dirname,'public')));
 app.use(routes);
