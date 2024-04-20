@@ -1,6 +1,9 @@
 import multer , {FileFilterCallback} from "multer";
+import { Request, Response } from "express";
 import multerS3 from 'multer-s3';
 import { S3Client } from "@aws-sdk/client-s3";
+import { File } from "./../types/file";
+
 
 //Conexion al bucket 
 const s3 = new S3Client({
@@ -23,8 +26,19 @@ const s3Storage = multerS3({
     }
 });
 
+const fileFilter = ( req : Request , file : File , cb : FileFilterCallback)=>{
+    const isValid = file.mimetype.startsWith('image/');
+    if(isValid){
+        cb(null , isValid);
+    }else{
+        cb(new Error('Invalid file type. Only images are allowed.'));
+
+    }
+};
+
 const upload = multer({
-    storage : s3Storage
+    storage : s3Storage,
+    fileFilter : fileFilter
 });
 
 export default upload;
