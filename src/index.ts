@@ -11,6 +11,7 @@ import session from 'express-session';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from '../swagger.config.json';
+import cookieParser from 'cookie-parser';
 
 
 const port = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ const db_url = process.env.URLDB || 'mongodb+srv://mateeldemoledor:hola123@clust
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
