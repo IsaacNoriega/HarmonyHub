@@ -29,7 +29,12 @@ router.get('', (req,res)=>{
 });
 
 
-router.get('/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+router.get('/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req : any, res) => {
+    const email = req.user?.emails[0]?.value;
+        // Guardar el email en una cookie
+        if (email) {
+            res.cookie('email', email, { httpOnly: true });
+        }
     // Si la autenticación es exitosa, el usuario será redirigido a /home
     res.redirect('/home');
 });
