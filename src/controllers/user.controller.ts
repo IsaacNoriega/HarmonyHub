@@ -3,6 +3,7 @@ import ResponseStatus from '../utils/response-status';
 import jwt from 'jsonwebtoken';
 import hashPassword from "../utils/hash-password";
 import User from '../models/user.model';
+import{ URLSearchParams }  from 'url';
 
 //Requerimentos para Multer
 import { File } from "./../types/file";
@@ -44,6 +45,7 @@ class UsersController {
                 console.log(dataToken);
                 console.log(process.env.TOKEN_KEY)
                 const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
+                res.cookie('email', dataToken.email, { httpOnly: true });
                 res.redirect('/home?t='+token);
 
             } else{
@@ -75,12 +77,12 @@ class UsersController {
     }
 
     userImage(req: Request , res: Response) : void {
-        const userId = req.params.id;
+        const email = req.cookies.email;
         const fileName = req.file.originalname;
-        const imagePath = `uploads/users/${userId}/images/${fileName}`;
+        const imagePath = `uploads/users/${email}/images/${fileName}`;
 
-        User.findByIdAndUpdate(userId , {$set : { image : imagePath }}).then(response =>{
-            res.send('Uploaded').status(ResponseStatus.SUCCESS);
+        User.findOneAndUpdate({email} , {$set : { image : imagePath }}).then(response =>{
+            res.render('home')
         }).catch( e => {
             res.send('Something went wrong').status(ResponseStatus.BAD_REQUEST);
         })
@@ -88,6 +90,7 @@ class UsersController {
 
 
 }
+
 
 export default new UsersController();
 
