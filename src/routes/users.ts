@@ -56,7 +56,7 @@ router.get("/login", (req, res) => {
 
 
 router.get('/home', authMiddlweare, (req, res)=>{
-    res.send('usuario autenticado');
+    res.render('indexapp')
 });
 
 router.get('/home', authMiddlweare, (req, res)=>{

@@ -287,6 +287,7 @@
 }
 .icon-group:before {
     content: "\e957";
+    color: black;
 }
 .icon-headset:before {
     content: "\e958";
@@ -449,15 +450,19 @@
 }
 .icon-paint-brush:before {
     content: "\e98d";
+    color: black;
 }
 .icon-paper-plane:before {
     content: "\e98e";
+    color: black;
 }
 .icon-pause:before {
     content: "\e98f";
+    color: black;
 }
 .icon-pen:before {
     content: "\e990";
+    color: black;
 }
 .icon-pencil:before {
     content: "\e991";
