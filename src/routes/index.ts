@@ -15,7 +15,7 @@ router.get('', (req , res)=>{
 });
 
 router.get('/support', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    res.sendFile(path.join(__dirname, '../public', 'support.html'));
 });
 
 export default router;
