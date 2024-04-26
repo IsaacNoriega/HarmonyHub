@@ -1,4 +1,5 @@
 import socketIo from 'socket.io';
+import response from '../utils/response';
 
 export default function setupSocket(server) {
     const io = new socketIo.Server(server);
@@ -10,7 +11,7 @@ export default function setupSocket(server) {
         socket.on('newUser', (data) => {
             socket.data.user = data.user;
             socket.broadcast.emit('newUser', data);
-            socket.emit('chat message', { user: 'Soporte', message: `Hola ${data.user}, bienvenido al chat de Soporte de HarmonyHub. ¿En qué puedo ayudarte? <br> 1) Cuenta <br> 2) Carga de archivos <br> 3) Otros`});
+            socket.emit('chat message', { user: 'Soporte', message: `Hola ${data.user}, bienvenido al chat de Soporte de HarmonyHub. Para iniciar la conversacion escribe "Hola" y para terminar escriba "Adios" `});
         });
 
         socket.on('newMessage', (data) => {
@@ -19,13 +20,22 @@ export default function setupSocket(server) {
             // Verifica el mensaje recibido y asigna la respuesta correspondiente
             switch (data.message.toLowerCase()) {
                 case 'hola':
-                    responseMessage = 'Hola';
+                    responseMessage = response.HELLO
                     break;
                 case 'adios':
-                    responseMessage = 'Hasta luego';
+                    responseMessage = response.BYE
+                    break;
+                case '1':
+                    responseMessage = response.OPT1
+                    break;
+                case '2':
+                    responseMessage = response.OPT2
+                    break;
+                case '3':
+                    responseMessage = response.OPT3
                     break;
                 default:
-                    responseMessage = 'Por favor, elige una opción válida';
+                    responseMessage = response.ERROR
                     break;
             }
             // Emitir el mensaje de respuesta solo al cliente que envió el mensaje
