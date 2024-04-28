@@ -55,20 +55,6 @@ router.get("/login", (req, res) => {
 });
 
 
-router.get('/home', authMiddlweare, (req, res)=>{
-    res.render('indexapp')
-});
-
-router.get('/home', authMiddlweare, (req, res)=>{
-    res.send('usuario autenticado por google');
-});
-
-router.get("", (req, res)=>{
-    res.render('home');
-});
-
-
-
 
 router.post('/signup', userController.signUp);
 router.post('/login',userController.login);

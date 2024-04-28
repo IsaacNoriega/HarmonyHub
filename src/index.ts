@@ -24,9 +24,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+//handlebars
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views','./src/views');
+
 app.use(session({
     secret: process.env.SECRET_KEY, 
     resave: false,

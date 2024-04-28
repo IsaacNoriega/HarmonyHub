@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sidebar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/indexapp.css">
+  <script src="https://kit.fontawesome.com/e0e1920977.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <div class="sidebar-top">
+        <span class="expand-btn" style="z-index: 9999;">
+          <img src="/assets/images/indexappimages/chevron.svg" alt="Chevron">
+        </span>
+        <img src="/assets/images/homeimages/logoHarmony.png" class="logo" alt="Laplace Logo"
+          style="width: 90px; height: auto;">
+        <h3 class="hide" style="margin-left: -30px;">HarmonyHub</h3>
+      </div>
+      <div class="sidebar-links">
+        <ul>
+          <li>
+            <a href="#portfolio" class="active" title="Portfolio link">
+              <div class="icon">
+                <img src="/assets/images/indexappimages/portfolio.svg" title="Portfolio Icon">
+              </div>
+              <span class="link hide">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#analytics" title="Analytics link">
+              <div class="icon">
+                <img src="/assets/images/indexappimages/analytics.svg" title="Analytics Icon">
+              </div>
+              <span class="link hide">Analytics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#dashboard" title="Performance link">
+              <div class="icon">
+                <img src="/assets/images/indexappimages/dashboard.svg" title="Performance Icon">
+              </div>
+              <span class="link hide">Algo</span>
+            </a>
+          </li>
+          <li>
+            <a href="/support" title="Reports Link" target="_blank">
+              <div class="icon">
+                <img src="/assets/images/indexappimages/reports.svg" title="Reports Icon">
+              </div>
+              <span class="link hide">Support</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="searchmenu">
+      <div class="body-toolbar">
+        <header>
+          <div class="navigation__group">
+            <i class="fa-solid fa-chevron-up" style="color: white; margin-top: 10px;"></i>
+            <i class="fa-solid fa-chevron-down" style="color: white; margin-top: 10px;"></i>
+            <form class="form" style="background-color: #212121; margin-top: 10px;">
+              <label for="search" style="background-color: #212121;">
+                <input required="" autocomplete="off" placeholder="Type a command or search" id="search" type="text">
+                <div class="icon3">
+                  <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" class="swap-on">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linejoin="round"
+                      stroke-linecap="round"></path>
+                  </svg>
+                  <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" class="swap-off">
+                    <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linejoin="round" stroke-linecap="round"></path>
+                  </svg>
+                </div>
+                <button type="reset" class="close-btn">
+                  <svg viewBox="0 0 20 20" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      fill-rule="evenodd"></path>
+                  </svg>
+                </button>
+              </label>
+            </form>
+            <i class="fa-regular fa-bell" style="margin-left: 57%; font-weigth: bold; margin-right: 5px; color: white"></i>
+            <div class="apps__button--wrapper">
+              <i class="fa-solid fa-question" style="font-weight: bold; margin-right: 5px; color: white"></i>
+            </div>
+            <button type="button" class="btn-t">
+              <img class="profile" src="assets/profile.jpg" alt="Profile Picture">
+            </button>
+          </div>
+        </header>
+      </div>
+      <div class="content">
+        {{{body}}}
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/indexapp.js"></script>
+</body>
+
+</html>

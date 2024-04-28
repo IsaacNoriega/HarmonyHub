@@ -1,7 +1,8 @@
 import express,{ Router } from "express";
 import user from './users';
-import authGoogle from './authGoogle'
-import path from 'path'
+import authGoogle from './authGoogle';
+import path from 'path';
+import home from './home';
 
 
 const router = Router();
@@ -9,6 +10,7 @@ const router = Router();
 router.use(express.json());
 router.use(user);
 router.use('/google', authGoogle);
+router.use('/home', home);
 
 router.get('', (req , res)=>{
     res.send('Api is working');
