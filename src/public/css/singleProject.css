@@ -9,13 +9,13 @@
 .dataContainer {
     width: 100%;
     height: 100%;
-    max-height: 220px;
+    max-height: 200px;
     margin-left: 2%;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .imgContainer {
-    height: 100%;
+    height: 108%;
     width: 20%;
 }
 
@@ -31,17 +31,19 @@
 
 .infoDataContainer {
     margin-left: 1%;
-    margin-top: 4%;
 }
 
 .infoDataContainer h1 {
     color: white;
     font-weight: bold;
+    font-size: 80px;
 }
 
 .infoDataContainer p {
-    color: rgba(245, 245, 245, 0.5);
+    color: white;
     font-weight: light;
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
 /*------ Settings ------*/
@@ -94,6 +96,21 @@
     width: 0;
 }
 
+#editButton {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin-top: -2%;
+    margin-left: 15%;
+    border-radius: 25px;
+}
+
+#editIcon {
+    font-size: 19px;
+    margin-left: 22%;
+    margin-top: 26%;
+}
 /* ------ Animation ------ */
 @keyframes keyframes-fill {
     0% {
@@ -190,7 +207,7 @@
     margin-left: 18px;
     margin-top: 17%;
     position: absolute;
-    z-index: 999999;
+    z-index: 5;
 }
 
 .imgPlayer {
@@ -224,7 +241,7 @@
     color: rgba(245, 245, 245, 0.5);
 }
 
-.midButtons{
+.midButtons {
     margin-left: 26%;
     margin-top: 1%;
 }
@@ -290,19 +307,25 @@
     margin-top: 1%;
 }
 
-.downButtonsPlayer p{
-    margin-left: 1px;
-    font-size: 12px;
-    color: rgba(245, 245, 245, 0.5) ;
+.newTrackTool{
+    margin-left: 2%;
+    color: rgba(245, 245, 245, 0.5);
     margin-top: 1%;
 }
 
-#trackStart{
+.downButtonsPlayer p {
+    margin-left: 1px;
+    font-size: 12px;
+    color: rgba(245, 245, 245, 0.5);
+    margin-top: 1%;
+}
+
+#trackStart {
     margin-left: -40px;
     margin-right: 26px;
 }
 
-#trackEnd{
+#trackEnd {
     margin-left: -64px;
 }
 
@@ -324,9 +347,9 @@
     position: absolute;
     margin-left: 35%;
     margin-top: -4%;
-  }
-  
-  .slider {
+}
+
+.slider {
     cursor: pointer;
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -338,19 +361,19 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    
-  }
-  
-  .slider .volume {
+
+}
+
+.slider .volume {
     display: inline-block;
     vertical-align: top;
     margin-right: var(--icon-margin);
     color: var(--icon-color);
     width: var(--icon-size);
     height: auto;
-  }
-  
-  .slider .level {
+}
+
+.slider .level {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -363,16 +386,164 @@
     -o-transition: height var(--level-transition-duration);
     transition: height var(--level-transition-duration);
     cursor: inherit;
-  }
-  
-  .slider .level::-webkit-slider-thumb {
+}
+
+.slider .level::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 0;
     height: 0;
     -webkit-box-shadow: -200px 0 0 200px var(--level-color);
     box-shadow: -200px 0 0 200px var(--level-color);
-  }
-  
-  .slider:hover .level {
+}
+
+.slider:hover .level {
     height: calc(var(--slider-height) * 2);
-  }
+}
+
+/*dropzone modal*/
+
+:root {
+    --primary: #111926;
+    --white: #fff;
+    --background: #F8F8FF;
+    --gray: #D3D3D3;
+}
+
+.dropzone-box {
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 36rem;
+    width: 100%;
+    background-color: var(--white);
+    position: absolute;
+    top: 91px;
+    left: 36%;
+    z-index: 12;
+}
+
+.dropzone-box h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dropzone-area {
+    padding: 1rem;
+    position: relative;
+    margin-top: 1rem;
+    min-height: 16rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px dashed var(--primary);
+    border-radius: 1rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.dropzone-area [type="file"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dropzone-area .file-upload-icon svg {
+    height: 5rem;
+    width: 5rem;
+    margin-bottom: 0.5rem;
+    stroke: var(--primary);
+}
+
+.dropzone--over {
+    border-style: solid;
+    background-color: var(--background);
+}
+
+.dropzone-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--gray);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.dropzone-actions button {
+    flex-grow: 1;
+    min-height: 3rem;
+    font-size: 1.2rem;
+}
+
+.dropzone-actions button:hover {
+    text-decoration: underline;
+}
+
+.dropzone-actions button[type='reset'] {
+    background-color: transparent;
+    border: 1px solid var(--gray);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.dropzone-actions button[type='submit'] {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+/* Estilos para la capa de fondo negro */
+/* Estilos para la capa de fondo negro */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Color negro semitransparente */
+    z-index: 10;
+    /* Colocar encima de otros elementos */
+    opacity: 0;
+    /* Inicialmente invisible */
+    transition: opacity 0.3s ease;
+    /* Agregar animación de opacidad */
+}
+
+/* Estilos para mostrar la capa de fondo negro cuando el formulario está visible */
+#overlay.visible {
+    display: block;
+    opacity: 1;
+}
+
+
+/* Estilos para mostrar la capa de fondo negro cuando el formulario está visible */
+.dropzone-box.visible+#overlay {
+    display: block;
+    z-index: 11;
+    opacity: 1;
+}
+
+.buttonPlayTrack{
+    margin-top: 3%;
+    padding: 15px;
+    background-color: #fef27a;
+    border-radius: 32px;
+    width: 55px;
+    height: auto;
+}

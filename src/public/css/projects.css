@@ -47,8 +47,14 @@
     width: 100%;
     position: absolute;
     transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-    background: #0a3394;
-    background: linear-gradient(to top, #0a3394, #4286f4);
+    background-color: #108cc6;
+}
+
+.card-image img{
+    object-fit: cover;
+    width: 100%;
+    /* Ancho completo de la imagen */
+    height: 100%;
 }
 
 /*Description */

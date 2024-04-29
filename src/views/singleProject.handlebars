@@ -11,21 +11,51 @@
         </div>
         <div class="infoDataContainer">
             <h1>The Helves Project</h1>
-            <p>10 tracks 46mins</p>
-            <label class="playBoton">
-                <input checked="checked" type="checkbox">
-                <svg viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="play">
-                    <path
-                        d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z">
-                    </path>
+            <div class="buttonsAlbum" style="display: flex;">
+                <button type="button" class="btn-t">
+                    <img class="profile"
+                        src="https://i.pinimg.com/originals/ce/7c/b2/ce7cb27b41f91c5d4b061c07d39936de.jpg"
+                        alt="Profile Picture">
+                </button>
+                <p style="margin-right: 2%;">Mateo Hernandez</p>
+                <i class="fa-solid fa-circle"
+                    style="color: white; margin-left: 1%; margin-right:1%; font-size: 8px; margin-top: 2%;"></i>
+                <p>10 tracks 46mins</p>
+            </div>
+            <div class="buttonsAlbumConfig" style="display: flex;">
+                <div class="buttonPlayTrack">
+                    <i class="fa-solid fa-play" style="font-size: 20px; margin-left: 23%; margin-top:12%;"></i>
+                </div>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    style="height:35px; width:35px; color: rgba(245, 245, 245, 0.5); margin-top: 31px; margin-left:3%;">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12.3536 1.14645C12.1583 0.951184 11.8417 0.951184 11.6464 1.14645C11.4512 1.34171 11.4512 1.65829 11.6464 1.85355L12.7929 3H12C10.7037 3 9.71111 3.58423 8.87248 4.38931C8.20065 5.03427 7.59349 5.85684 6.99461 6.6682C6.86287 6.84668 6.73154 7.02462 6.6 7.2C5.10874 9.18835 3.49037 11 0.5 11C0.223858 11 0 11.2239 0 11.5C0 11.7761 0.223858 12 0.5 12C4.00963 12 5.89126 9.81165 7.4 7.8C7.54367 7.60845 7.6832 7.41962 7.81996 7.23454L7.82005 7.23443L7.82006 7.23441C8.41674 6.42695 8.96069 5.69085 9.56502 5.11069C10.2889 4.41577 11.0463 4 12 4H12.7929L11.6464 5.14645C11.4512 5.34171 11.4512 5.65829 11.6464 5.85355C11.8417 6.04882 12.1583 6.04882 12.3536 5.85355L14.3536 3.85355C14.5488 3.65829 14.5488 3.34171 14.3536 3.14645L12.3536 1.14645ZM0.5 3C3.35278 3 5.12992 4.44588 6.50548 6.06746L6.3762 6.24266C6.2483 6.4161 6.12293 6.58609 6 6.75C5.96397 6.79804 5.92798 6.84581 5.892 6.89331C4.57348 5.29306 3.02637 4 0.5 4C0.223858 4 0 3.77614 0 3.5C0 3.22386 0.223858 3 0.5 3ZM8.87248 10.6107C8.37284 10.131 7.90897 9.55314 7.45767 8.95468C7.64688 8.71693 7.82704 8.48061 8 8.25L8.08987 8.12987C8.58412 8.79402 9.05288 9.39766 9.56502 9.88931C10.2889 10.5842 11.0463 11 12 11H12.7929L11.6464 9.85355C11.4512 9.65829 11.4512 9.34171 11.6464 9.14645C11.8417 8.95118 12.1583 8.95118 12.3536 9.14645L14.3536 11.1464C14.5488 11.3417 14.5488 11.6583 14.3536 11.8536L12.3536 13.8536C12.1583 14.0488 11.8417 14.0488 11.6464 13.8536C11.4512 13.6583 11.4512 13.3417 11.6464 13.1464L12.7929 12H12C10.7037 12 9.71111 11.4158 8.87248 10.6107Z"
+                        fill="currentColor" />
                 </svg>
-                <svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="pause">
-                    <path
-                        d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z">
-                    </path>
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    id="newTrack"
+                    style="height:35px; width:35px; color: rgba(245, 245, 245, 0.5); margin-top: 31px; margin-left:3%;"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-                <p>Play</p>
-            </label>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 17.5" fill="none" x="0px" y="0px"
+                    style="height:43px; width:34px; color: rgba(245, 245, 245, 0.5); margin-top: 31px; margin-left:2%;">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7 12C9.76142 12 12 9.76143 12 7.00001C12 4.23858 9.76142 2.00001 7 2.00001C4.23858 2.00001 2 4.23858 2 7.00001C2 9.76143 4.23858 12 7 12ZM7 13C10.3137 13 13 10.3137 13 7.00001C13 3.6863 10.3137 1.00001 7 1.00001C3.68629 1.00001 1 3.6863 1 7.00001C1 10.3137 3.68629 13 7 13Z"
+                        fill="rgba(245, 245, 245, 0.5)" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M6.99998 9.43657C6.72384 9.43657 6.49999 9.21271 6.49999 8.93657L6.49999 4.68017C6.49999 4.40403 6.72385 4.18017 6.99999 4.18017C7.27614 4.18018 7.49999 4.40403 7.49999 4.68018L7.49999 8.93657C7.49999 9.21271 7.27613 9.43657 6.99998 9.43657Z"
+                        fill="rgba(245, 245, 245, 0.5)" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7.46227 9.56694C7.19443 9.81046 6.78511 9.80961 6.5183 9.56497L4.47794 7.69417C4.2744 7.50755 4.26069 7.19126 4.44731 6.98773C4.63393 6.78419 4.95022 6.77048 5.15375 6.9571L6.99222 8.64278L8.84778 6.95568C9.0521 6.76992 9.36832 6.78496 9.55409 6.98927C9.73985 7.19359 9.72482 7.50981 9.5205 7.69558L7.46227 9.56694Z"
+                        fill="rgba(245, 245, 245, 0.5)" />
+                </svg>
+
+            </div>
+
+
         </div>
     </div>
 
@@ -68,9 +98,8 @@
         </div>
 
     </div>
-
     <div class="tracksDaD">
-        <div class="tracks">
+        <div class="tracks" style="margin-top: 2%;">
             <!-- Tarjetas aquí -->
             <div class="track" onclick="changeBackground(this)">
                 <div class="trackInfo" style="display: flex;">
@@ -115,6 +144,35 @@
             <!-- Agrega más tarjetas según sea necesario -->
         </div>
     </div>
+
+    <div id="overlay"></div>
+    <form class="dropzone-box" style="display: none; transition: opacity 0.3s ease;">
+        <h2>Upload and attach files</h2>
+        <p>
+            Attach files to this project
+        </p>
+        <div class="dropzone-area">
+            <div class="file-upload-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                </svg>
+            </div>
+            <p>Click to upload or drag and drop</p>
+            <input type="file" required id="upload-file" name="uploaded-file">
+            <p class="message">No Files Selected</p>
+        </div>
+        <div class="dropzone-actions">
+            <button type="reset">
+                Cancel
+            </button>
+            <button id="submit-button" type="submit">
+                Save
+            </button>
+        </div>
+    </form>
 
 </div>
 
