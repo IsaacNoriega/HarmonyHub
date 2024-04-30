@@ -1,0 +1,80 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* Estilos para los datos del perfil */
+.profile-data {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-data h2 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.username, .email, .imageProfile {
+    text-align: center;
+}
+
+.imageProfile img {
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+/* Estilos para la configuración del perfil */
+.config-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.config-container h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.config-container form {
+    margin-bottom: 20px;
+}
+
+.config-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.config-container input[type="text"],
+.config-container input[type="password"],
+.config-container input[type="file"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.config-container button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.config-container button:hover {
+    background-color: #4cae4c;
+}
