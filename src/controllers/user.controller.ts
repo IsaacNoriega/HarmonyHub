@@ -79,15 +79,58 @@ class UsersController {
     userImage(req: Request , res: Response) : void {
         const email = req.cookies.email;
         const fileName = req.file.originalname;
-        const imagePath = `uploads/users/${email}/images/${fileName}`;
+        const imagePath = `https://harmonyhub.s3.us-east-2.amazonaws.com/${fileName}`;
 
-        User.findOneAndUpdate({email} , {$set : { image : imagePath }}).then(response =>{
-            res.render('home')
+        User.findOneAndUpdate({email : email} , {$set : { image : imagePath }}).then(response =>{
+            res.redirect('/profile')
         }).catch( e => {
             res.send('Something went wrong').status(ResponseStatus.BAD_REQUEST);
         })
     }
 
+    changePassword(req : Request , res : Response) : void {
+        const email = req.cookies.email
+        const newPaswword = hashPassword( req.body.password);
+
+        User.findOneAndUpdate({email : email}, {$set : {password : newPaswword}}).then(response =>{
+            res.redirect('/profile');
+        }).catch( e => {
+            res.send('Somenthing went wrong').status(ResponseStatus.BAD_REQUEST);
+        })
+    }
+
+    changeUsername(req : Request , res : Response) : void {
+        const email = req.cookies.email
+        const newUsername = req.body.name;
+
+        User.findOneAndUpdate({email : email}, {$set : {name : newUsername}}).then(response =>{
+            res.redirect('/profile');
+        }).catch( e => {
+            res.send('Somenthing went wrong').status(ResponseStatus.BAD_REQUEST);
+        })
+    }
+
+
+    getUserByEmail(req: Request , res : Response) : void {
+        const email = req.cookies.email;
+
+        User.findOne({ email : email}).then(response => {
+            if(response){
+                const data = {
+                    name : response.name ,
+                    password : response.password,
+                    email : response.email,
+                    image : response.image
+                }
+                res.render('profile' , { user : data , layout : 'main'});
+            }else {
+                res.status(ResponseStatus.UNAUTHTENTICATED).send('user not authenticated');
+                console.log('no hay');
+            }
+        }).catch( e => {
+            res.status(ResponseStatus.BAD_REQUEST)
+        } )
+    }
 
 }
 
