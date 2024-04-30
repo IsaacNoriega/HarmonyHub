@@ -35,8 +35,9 @@ const router = Router();
  *       400:
  *         description: Error uploading the image
  */
-//router.post("/upload", uploadMiddleware.single('Foto'), userController.userImage);
-
+router.post("/uploadImage", uploadMiddleware.single('Foto'), userController.userImage);
+router.post("/uploadName",userController.changeUsername);
+router.post("/uploadPassword",userController.changePassword);
 
 router.get("/signup", (req, res) => {
     res.render('register');
@@ -58,6 +59,7 @@ router.get("", (req, res) => {
     res.render('home');
 });
 
+router.get("/profile",userController.getUserByEmail)
 
 router.post('/signup', userController.signUp);
 router.post('/login',userController.login);
