@@ -92,7 +92,7 @@
             <div class="apps__button--wrapper">
               <i class="fa-solid fa-question" style="font-weight: bold; margin-right: 5px; color: white"></i>
             </div>
-            <button type="button" class="btn-t">
+            <button type="button" class="btn-t" onclick="redirectToPage()">
               <img class="profile" src="assets/profile.jpg" alt="Profile Picture">
             </button>
           </div>
@@ -104,6 +104,11 @@
     </div>
   </div>
 
+  <script>
+    function redirectToPage(){
+      window.location.href='/profile'
+    }
+  </script>
   <script src="/assets/js/indexapp.js"></script>
 </body>
 
