@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/assets/css/profile.css">
+
+
+
+<h1> Datos del Perfil</h1>
+<hr>
+<div class="profile-data">
+    <div class="imageProfile">
+        <img src="{{user.image}}" alt="Imagen de perfil">
+    </div>
+    <div class="username">
+        <h2>Username  : {{user.name}}</h2>
+    </div>
+    <div class="email">
+        <h2>Correo electrónico: {{user.email}}</h2>
+    </div>
+</div>
+
+
+<hr>
+
+<h1>Configuracion del Perfil</h1>
+
+<div class="config-container">
+    <div class="name-config">
+        <h2>Cambiar Nombre de Usuario</h2>
+        <form action="/uploadName" method="POST">
+            <label for="Username">Nueva contraseña:</label>
+            <input type="text" id="username" name="name" placeholder="{{user.name}}">
+            <button type="submit">Cambiar Username</button>
+        </form>
+    </div>
+    <div class="password-config">
+        <h2>Cambiar Contraseña</h2>
+        <form action="/uploadPassword" method="POST">
+            <label for="Contraseña">Nueva contraseña:</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Cambiar contraseña</button>
+        </form>
+    </div>
+    <div class="image-config">
+        <h2>Cambiar Imagen de Perfil</h2>
+        <form action="/uploadImage" method="POST" enctype="multipart/form-data">
+            <label for="Image Profile">New Profile Image:</label>
+            <input type="file" id="Foto" name="Foto" accept="image/*">
+            <button type="submit">Cambiar Imagen</button>
+        </form>
+    </div>
+</div>
