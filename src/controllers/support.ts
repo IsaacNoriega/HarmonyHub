@@ -5,7 +5,7 @@ export default function setupSocket(server) {
     const io = new socketIo.Server(server);
 
     io.on('connection', (socket) => {
-        console.log('Un nuevo usuario se ha conectado');
+        console.log('Un nuevo usuario se ha conectado', socket.id);
         
         socket.on('newUser', (data) => {
             // Asignar al usuario una sala de chat única basada en su identificador (p. ej., nombre de usuario)

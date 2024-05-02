@@ -14,6 +14,7 @@ import swaggerConfig from '../swagger.config.json';
 import cookieParser from 'cookie-parser';
 import http from 'http'; // Importa http para crear un servidor
 import support from './controllers/support';
+import home from './controllers/home.controller';
 const port = process.env.PORT || 3000;
 const db_url = process.env.URLDB || 'mongodb+srv://mateeldemoledor:hola123@cluster0.ztfvxtn.mongodb.net/HarmonyHub?retryWrites=true&w=majority';
 
@@ -47,6 +48,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Socket
 support(server);
+home(server);
 
 console.log(db_url);
 mongoose.connect(db_url).then(() => {

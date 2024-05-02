@@ -1,3 +1,6 @@
+const socket = io();
+
+
 const icon = document.getElementById("iconplus");
 const text = document.getElementById("textplus");
 const icon2 = document.getElementById("icontime");
@@ -50,3 +53,5 @@ text2.addEventListener("mouseleave", () => {
   text2.style.color = "rgba(245, 245, 245, 0.5)";
   document.body.style.cursor = "default";
 });
+
+
