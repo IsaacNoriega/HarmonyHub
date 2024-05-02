@@ -1,6 +1,10 @@
 import { Router , Request, Response} from "express";
 import passport from 'passport';
 import { Strategy as GoogleStrategy} from 'passport-google-oauth20';
+import jwt from 'jsonwebtoken';
+import User from "../models/user.model";
+import response from "../utils/response";
+import ResponseStatus from '../utils/response-status';
 
 const router = Router();
 
@@ -30,13 +34,28 @@ router.get('', (req,res)=>{
 
 
 router.get('/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req : any, res) => {
-    const email = req.user?.emails[0]?.value;
-        // Guardar el email en una cookie
-        if (email) {
-            res.cookie('email', email, { httpOnly: true });
+    const googleEmail = req.user?.emails[0]?.value;
+    const googleName = req?.user?.displayName;
+    const dataToken = {
+        name: googleName,
+        email: googleEmail,
+    }
+    User.findOne({
+        email: googleEmail
+    }).then(response =>{
+        if(response){
+            console.log('Usuario ya existe en la base de datos');
         }
-    // Si la autenticación es exitosa, el usuario será redirigido a /home
-    res.redirect('/home');
+        else{
+            User.create(dataToken).then(response =>{
+                console.log('Usuario: ',dataToken," Agregado a la base de datos");
+            });
+        }
+    }).catch(e =>{
+        res.sendStatus(ResponseStatus.BAD_REQUEST);
+    })
+    const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
+    res.redirect('/home?t='+token);
 });
 
 
