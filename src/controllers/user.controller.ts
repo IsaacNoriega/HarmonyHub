@@ -6,11 +6,11 @@ import User from '../models/user.model';
 import{ URLSearchParams }  from 'url';
 
 //Requerimentos para Multer
-import { File } from "./../types/file";
+import { File } from "../types/fileImage";
 import multer, {FileFilterCallback} from "multer";
 import s3Storage from "multer-s3";
 
-const storage = multer.diskStorage({
+const storageImages = multer.diskStorage({
     filename : ( req , file , cb ) => {
         cb(null , file.originalname);
     },
@@ -19,10 +19,23 @@ const storage = multer.diskStorage({
     }
 });
 
+// Middleware para archivos MP3
+const storageForMP3 = multer.diskStorage({
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+    destination: (req, file, cb) => {
+        // Puedes especificar una carpeta diferente si lo deseas
+        cb(null, process.env.UPLOAD_FOLDER);
+    }
+});
 
+const uploadMp3 = multer({
+    storage : storageForMP3,
+})
 
-const upload = multer({
-    storage,
+const uploadImages = multer({
+    storage : storageImages
 })
 
 
