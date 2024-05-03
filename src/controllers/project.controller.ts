@@ -5,6 +5,7 @@ import hashPassword from "../utils/hash-password";
 import Project from '../models/projects.model';
 import{ URLSearchParams }  from 'url';
 import response from "../utils/response";
+import { json } from "stream/consumers";
 
 class ProjectController{
 
@@ -56,6 +57,18 @@ class ProjectController{
             res.status(ResponseStatus.SUCCESS).send('Project updated: '+ response); 
         }).catch(e =>{
             res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong'); 
+        })
+    }
+
+    fromTokenToJson(req: Request, res: Response){
+        const token: string | undefined = req.query.t as string;
+        jwt.verify(token, process.env.TOKEN_KEY || '', (error: jwt.VerifyErrors | null, decoded: any) =>{
+            if (error) {
+                console.error('Error al decodificar el token:', error.message);
+                res.status(401).send('Token inválido');
+            } else {
+                res.status(200).json(decoded);
+            }
         })
     }
 }

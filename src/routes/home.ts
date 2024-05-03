@@ -40,8 +40,12 @@ router.get('', authMiddlweare, (req, res) => {
     res.send('usuario autenticado por google');
 });
 
+router.get('/getToken', projectController.fromTokenToJson);
+
 router.get('/project', authMiddlweare, (req, res) => {
     res.render('singleProject', { layout: 'sidebarmenu' });
 });
+
+
 
 export default router;
