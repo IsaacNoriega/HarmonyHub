@@ -3,6 +3,8 @@ import authMiddlweare from '../middlewares/auth.middleware';
 import User from "../models/user.model";
 import jwt  from "jsonwebtoken";
 import response from "../utils/response";
+import projectController from '../controllers/project.controller';
+import userController from "../controllers/user.controller";
 const router = Router();
 
 router.get('', authMiddlweare, (req, res) => {
@@ -25,6 +27,14 @@ router.get('', authMiddlweare, (req, res) => {
         }
     })
 });
+
+router.post('', projectController.getProjectsByUserMail);
+
+router.post('/deleteProject', projectController.deleteProjectByMail);
+
+router.post('/updateProject', projectController.updateProjectByMail);
+
+router.post('/createProject', projectController.createProject);
 
 router.get('', authMiddlweare, (req, res) => {
     res.send('usuario autenticado por google');
