@@ -1,7 +1,8 @@
 import { Router , Request, Response} from "express";
 import userController from "../controllers/user.controller";
 import hashPassword from "../utils/hash-password";
-import uploadMiddleware from "../middlewares/upload-s3";
+import uploadImage from "../middlewares/upload-s3-Images";
+import uploadMp3 from "../middlewares/upload-s3-mp3";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerConfig from '../../swagger.config.json';
@@ -35,9 +36,15 @@ const router = Router();
  *       400:
  *         description: Error uploading the image
  */
-router.post("/uploadImage", uploadMiddleware.single('Foto'), userController.userImage);
+router.post("/uploadImage", uploadImage.single('Foto'), userController.userImage);
 router.post("/uploadName",userController.changeUsername);
 router.post("/uploadPassword",userController.changePassword);
+
+router.post("/uploadSong", uploadMp3.single('Song'), (req, res) => {
+    console.log("Archivo MP3 cargado con éxito:", req.file);
+    res.send('Proyect Uploaded')
+    // Aquí puedes enviar una respuesta al cliente
+});
 
 router.get("/signup", (req, res) => {
     res.render('register');
