@@ -19,20 +19,6 @@ const storageImages = multer.diskStorage({
     }
 });
 
-// Middleware para archivos MP3
-const storageForMP3 = multer.diskStorage({
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    },
-    destination: (req, file, cb) => {
-        // Puedes especificar una carpeta diferente si lo deseas
-        cb(null, process.env.UPLOAD_FOLDER);
-    }
-});
-
-const uploadMp3 = multer({
-    storage : storageForMP3,
-})
 
 const uploadImages = multer({
     storage : storageImages
