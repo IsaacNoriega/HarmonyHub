@@ -1,0 +1,7 @@
+POST http://localhost:3000/home/createProject
+Content-Type: application/json
+
+{
+  "projectName": "Proyecto de ejemplo cuatro",
+  "userId" : "mateeldemoledor@gmail.com"
+}

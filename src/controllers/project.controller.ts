@@ -34,11 +34,10 @@ class ProjectController{
 
     getProjectsByUserMail(req: Request, res: Response){
         const email = req.body.email;
-        Project.findOne({
+        Project.find({
             userId : email
         }).then(response =>{
-            res.status(ResponseStatus.SUCCESS).send('Projects found: '+ response); 
-            return response
+            res.status(ResponseStatus.SUCCESS).json(response); 
         }).catch(e =>{
             res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong'); 
         })

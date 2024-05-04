@@ -5,28 +5,8 @@ import jwt  from "jsonwebtoken";
 import response from "../utils/response";
 import projectController from '../controllers/project.controller';
 import userController from "../controllers/user.controller";
+import axios from "axios";
 const router = Router();
-
-router.get('', authMiddlweare, (req, res) => {
-    const token: string | undefined = req.query.t as string;
-    jwt.verify(token, process.env.TOKEN_KEY || '', (error: jwt.VerifyErrors | null, decoded: any) =>{
-        if (error) {
-            console.error('Error al decodificar el token:', error.message);
-            res.status(401).send('Token inválido');
-        } else {
-            User.findOne({
-                email : decoded.email
-            }).then(response =>{
-                if(response.image){
-                    res.render('projects', { layout: 'sidebarmenu', profileImg: response.image });
-                }
-                else{
-                    res.render('projects', { layout: 'sidebarmenu', profileImg: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' });
-                }
-            })
-        }
-    })
-});
 
 router.post('', projectController.getProjectsByUserMail);
 
@@ -37,12 +17,33 @@ router.post('/updateProject', projectController.updateProjectByMail);
 router.post('/createProject', projectController.createProject);
 
 router.get('', authMiddlweare, (req, res) => {
-    res.send('usuario autenticado por google');
+    const token: string | undefined = req.query.t as string;
+    jwt.verify(token, process.env.TOKEN_KEY || '', (error: jwt.VerifyErrors | null, decoded: any) =>{
+        if (error) {
+            console.error('Error al decodificar el token:', error.message);
+            res.status(401).send('Token inválido');
+        } else {
+            User.findOne({
+                email : decoded.email
+            }).then(response1 =>{
+                axios.post(`${process.env.AXIOS_URL}`+`${process.env.PORT}`+'/home',{
+                    email: response1.email
+                }).then( projects =>{
+                    if(response1.image){
+                        res.render('projects', { layout: 'sidebarmenu', profileImg: response1.image, userName: response1.name, projects : projects.data});
+                    }else{
+                        res.render('projects', { layout: 'sidebarmenu', profileImg: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', userName: response1.name, projects : projects.data });
+                    }
+                })
+            })
+        }
+    })
 });
+
 
 router.get('/getToken', projectController.fromTokenToJson);
 
-router.get('/project', authMiddlweare, (req, res) => {
+router.get('/project', (req, res) => {
     res.render('singleProject', { layout: 'sidebarmenu' });
 });
 

@@ -19,27 +19,46 @@
     overflow-y: auto;
 }
 
+.newProjectButton:hover{
+    color: white;
+}
+
 .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* Alinear al inicio */
     margin-left: 1%;
-    /* Espacio entre las tarjetas */
     padding: 10px;
-    /* Espacio interior */
-    overflow-y: auto;
-    /* Permitir desplazamiento vertical si hay más tarjetas que el contenedor puede mostrar */
-    max-height: 300px;
-    /* Altura máxima del contenedor */
+    overflow-y: hidden;
+    max-height: 400px;
 }
 
 .card {
     height: 190px;
-    width: 190px;
+    width: 200px;
+    /* Ancho fijo predefinido */
+    margin-right: 60px;
+    /* Más espacio entre las tarjetas */
+    margin-bottom: 20px;
+    /* Más espacio entre las filas */
     position: relative;
     transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     border-radius: 16px;
     overflow: hidden;
+    cursor: pointer;
 }
+
+.card:nth-child(2n+1) {
+    margin-right: 60px;
+    /* Reinicia el margen derecho para cada segunda tarjeta */
+}
+
+.card:nth-last-child(-n+2) {
+    margin-right: 60px;
+    /* Restaura el margen derecho para las últimas dos tarjetas */
+}
+
 
 /*Image*/
 .card-image {
@@ -50,7 +69,7 @@
     background-color: #108cc6;
 }
 
-.card-image img{
+.card-image img {
     object-fit: cover;
     width: 100%;
     /* Ancho completo de la imagen */
@@ -79,8 +98,10 @@
 }
 
 .text-body {
-    font-size: 1rem;
+    font-size: 12px;
     line-height: 130%;
+    color: #3e3e3e;
+    font-weight: bold;
 }
 
 
@@ -186,4 +207,139 @@
 .bar-projects .input-bar {
     margin-left: 5px;
     /* Espacio a la izquierda del input */
+}
+
+/*no projects*/
+.noProjects {
+    width: 98%;
+    height: 380px;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    gap: 13px;
+    position: relative;
+    overflow: hidden;
+    border: 0px;
+    border-radius: 15px;
+}
+
+
+.cookieHeading {
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+}
+
+.cookieDescription {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.acceptButton {
+    width: 100px;
+    height: 38px;
+    background-color: #fef27a;
+    transition-duration: .2s;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+
+.declineButton:hover {
+    background-color: #ebebeb;
+    transition-duration: .2s;
+}
+
+.acceptButton:hover {
+    transition-duration: .2s;
+}
+
+.modalNewProject{
+    height: 135px;
+    width: 50%;
+    position: fixed;
+    background-color: var(--primary-color-dark);
+    top: 191px;
+    left: 455px;
+    z-index: 9999;
+    border-radius: 10px;
+}
+
+#inputNewProject{
+    width: 99%;
+    background-color: var(--primary-color-dark);
+    height: 55%;
+    border: 0px;
+    font-size: 20px;
+    margin-left: 1%;
+    color: white;
+    box-shadow: 0 1px 0 rgba(95, 106, 115, 0.9);
+}
+
+#inputNewProject:focus {
+    outline: none;
+}
+
+#inputNewProject::placeholder{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#createPButton{
+    width: 98%;
+    height: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color: rgba(95, 106, 115, 0.199);
+    margin-top: 2%;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Definir la animación de entrada */
+@keyframes growIn {
+    from {
+        transform: scale(0.5); /* Escala inicial */
+        opacity: 0; /* Opacidad inicial */
+    }
+    to {
+        transform: scale(1); /* Escala final */
+        opacity: 1; /* Opacidad final */
+    }
+}
+
+/* Definir la animación de salida */
+@keyframes shrinkOut {
+    from {
+        transform: scale(1); /* Escala inicial */
+        opacity: 1; /* Opacidad inicial */
+    }
+    to {
+        transform: scale(0.5); /* Escala final */
+        opacity: 0; /* Opacidad final */
+    }
+}
+
+/* Aplicar la animación de entrada al contenido del modal */
+#modalContent {
+    animation: growIn 0.3s ease; /* Aplicar la animación de entrada */
+}
+
+/* Aplicar la animación de salida cuando el modal se oculta */
+#modalNewProject.hidden #modalContent {
+    animation: shrinkOut 0.3s ease; /* Aplicar la animación de salida */
 }
