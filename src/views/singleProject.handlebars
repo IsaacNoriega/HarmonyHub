@@ -96,83 +96,56 @@
                 </svg>
             </label>
         </div>
-
     </div>
-    <div class="tracksDaD">
-        <div class="tracks" style="margin-top: 2%;">
-            <!-- Tarjetas aquí -->
-            <div class="track" onclick="changeBackground(this)">
-                <div class="trackInfo" style="display: flex;">
-                    <p id="numberTrack">1</p>
-                    <p>Cancion 1</p>
-                    <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
-                </div>
-                <p id="trackDuration">5:45</p>
+<div class="tracksDaD">
+    <div class="tracks" style="margin-top: 2%;">
+        {{#each songs}}
+        <div class="track" onclick="changeBackground(this)">
+            <div class="trackInfo" style="display: flex;">
+                <p id="numberTrack">{{ @index}}</p>
+                <p>Cancion {{@index}}</p>
+                <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
             </div>
-            <div class="track" onclick="changeBackground(this)">
-                <div class="trackInfo" style="display: flex;">
-                    <p id="numberTrack">2</p>
-                    <p>Cancion 1</p>
-                    <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
-                </div>
-                <p id="trackDuration">5:45</p>
-            </div>
-            <div class="track" onclick="changeBackground(this)">
-                <div class="trackInfo" style="display: flex;">
-                    <p id="numberTrack">3</p>
-                    <p>Cancion 1</p>
-                    <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
-                </div>
-                <p id="trackDuration">5:45</p>
-            </div>
-            <div class="track" onclick="changeBackground(this)">
-                <div class="trackInfo" style="display: flex;">
-                    <p id="numberTrack">4</p>
-                    <p>Cancion 1</p>
-                    <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
-                </div>
-                <p id="trackDuration">5:45</p>
-            </div>
-            <div class="track" onclick="changeBackground(this)">
-                <div class="trackInfo" style="display: flex;">
-                    <p id="numberTrack">5</p>
-                    <p>Cancion 1</p>
-                    <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
-                </div>
-                <p id="trackDuration">5:45</p>
-            </div>
-            <!-- Agrega más tarjetas según sea necesario -->
+            <p>URL {{@index}}</p>
+            <audio class="audioPlayer" src="{{@index}}"></audio>
         </div>
+        {{/each}}
     </div>
+</div>
 
-    <div id="overlay"></div>
-    <form class="dropzone-box" style="display: none; transition: opacity 0.3s ease;">
-        <h2>Upload and attach files</h2>
-        <p>
-            Attach files to this project
-        </p>
-        <div class="dropzone-area">
-            <div class="file-upload-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                </svg>
-            </div>
-            <p>Click to upload or drag and drop</p>
-            <input type="file" required id="upload-file" name="uploaded-file">
-            <p class="message">No Files Selected</p>
+</div>
+
+<div id="overlay"></div>
+<form class="dropzone-box" style="display: none; transition: opacity 0.3s ease;" action="/project/uploadSong"
+    method="POST" enctype="multipart/form-data">
+    <h2>Upload and attach files</h2>
+    <h4>Track name</h4>
+    <input type="text" name="name" id="name">
+    <p>
+        Attach files to this project
+    </p>
+    <div class="dropzone-area">
+        <div class="file-upload-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+            </svg>
         </div>
-        <div class="dropzone-actions">
-            <button type="reset">
-                Cancel
-            </button>
-            <button id="submit-button" type="submit">
-                Save
-            </button>
-        </div>
-    </form>
+        <p>Click to upload or drag and drop</p>
+        <input type="file" required id="Song" name="Song" accept="audio/mp3">
+        <p class="message">No Files Selected</p>
+    </div>
+    <div class="dropzone-actions">
+        <button type="reset">
+            Cancel
+        </button>
+        <button id="submit-button" type="submit">
+            Save
+        </button>
+    </div>
+</form>
 
 </div>
 
