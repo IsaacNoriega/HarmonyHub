@@ -84,6 +84,9 @@ document.getElementById('projectForm').addEventListener('submit', function (even
         cardsContainer.appendChild(newDiv);
       }
 
+      const modalProject = document.getElementById('modalNewProject');
+      modalProject.style.display = 'none';
+
 
     },
     error: function (xhr, status, error) {
@@ -93,6 +96,26 @@ document.getElementById('projectForm').addEventListener('submit', function (even
   });
 
 });
+
+function redirectProject(projectName, userId) {
+  $.ajax({
+    url: 'http://localhost:3000/home/getProjectToken',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      projectName: projectName,
+      userId: userId,
+    }),
+    success: function (response) {
+      // Aquí response contendrá el token generado en el backend
+      console.log('Token generado:', response.token);
+      window.location.href = '/project?t='+response.token;
+    },
+    error: function (xhr, status, error) {
+      console.error('Error al obtener el token:', error);
+    }
+  });
+}
 
 
 

@@ -42,11 +42,7 @@ router.get('', authMiddlweare, (req, res) => {
 });
 
 
-router.get('/getToken', projectController.fromTokenToJson);
-
-router.get('/project', (req, res) => {
-    res.render('singleProject', { layout: 'sidebarmenu' });
-});
+router.post('/getProjectToken', projectController.getProjectToken);
 
 
 

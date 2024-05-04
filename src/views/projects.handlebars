@@ -28,7 +28,7 @@
         <div class="cards" style="margin-top: 10px;" id="cardsContainer">
             {{#if projects}}
             {{#each projects}}
-            <div class="card">
+            <div class="card" onclick="redirectProject('{{projectName}}','{{userId}}',)">
                 <div class="card-image">
                     <img src="{{#if projectImage}}{{projectImage}}{{else}}https://i.pinimg.com/564x/47/5b/72/475b72acb3f65dd57e938e4eab8ac895.jpg{{/if}}"
                         alt="">

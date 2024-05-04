@@ -76,16 +76,13 @@ class ProjectController{
         })
     }
 
-    fromTokenToJson(req: Request, res: Response){
-        const token: string | undefined = req.query.t as string;
-        jwt.verify(token, process.env.TOKEN_KEY || '', (error: jwt.VerifyErrors | null, decoded: any) =>{
-            if (error) {
-                console.error('Error al decodificar el token:', error.message);
-                res.status(401).send('Token inválido');
-            } else {
-                res.status(200).json(decoded);
-            }
-        })
+    getProjectToken(req: Request, res: Response){
+        const dataToken ={
+            projectName : req.body.projectName,
+            userId : req.body.userId,
+        }
+        const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
+        res.json({ token: token });
     }
 }
 
