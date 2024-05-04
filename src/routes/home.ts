@@ -4,6 +4,7 @@ import User from "../models/user.model";
 import jwt  from "jsonwebtoken";
 import response from "../utils/response";
 import projectController from '../controllers/project.controller';
+import uploadMp3 from "../middlewares/upload-s3-mp3";
 import userController from "../controllers/user.controller";
 import axios from "axios";
 const router = Router();
@@ -14,7 +15,7 @@ router.post('/deleteProject', projectController.deleteProjectByMail);
 
 router.post('/updateProject', projectController.updateProjectByMail);
 
-router.post('/createProject', projectController.createProject);
+router.post('/createProject', uploadMp3.single('Song'), projectController.createProject);
 
 router.get('', authMiddlweare, (req, res) => {
     const token: string | undefined = req.query.t as string;
