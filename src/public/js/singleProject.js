@@ -77,9 +77,5 @@ dropzoneBox.addEventListener("reset", (e) => {
     dropzoneFileMessage.innerHTML = `No Files Selected`;
 });
 
-dropzoneBox.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const myFiled = document.getElementById("upload-file");
-    console.log(myFiled.files[0]);
-});
+
 
