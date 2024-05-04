@@ -89,6 +89,7 @@
     border-radius: 16px;
     transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
     padding: 1rem;
+    width: 100%;
 }
 
 /*Text*/
@@ -343,7 +344,6 @@
 #modalNewProject.hidden #modalContent {
     animation: shrinkOut 0.3s ease; /* Aplicar la animación de salida */
 }
-
 .modalNewProject{
     height: auto; /* Cambia la altura a automático para que se ajuste al contenido */
     width: 50%;
@@ -361,13 +361,12 @@
 
 #inputNewProject {
     width: 100%;
-    background-color: var(--primary-color-dark);
+    background-color: transparent;
     height: 40px;
-    border: 1px solid var(--gray-dark); /* Agrega un borde */
+    border: none;
     border-radius: 5px;
     padding: 5px 10px; /* Agrega un espacio de relleno */
     font-size: 16px;
-    margin-bottom: 20px; /* Agrega espacio inferior */
     color: white;
 }
 

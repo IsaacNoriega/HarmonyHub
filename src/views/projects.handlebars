@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/assets/css/projects.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <div class="MainContainer" style="width: 100%; height:1200px; background-color:#212121; margin-top: -16px;">
 
@@ -24,8 +25,7 @@
             <i class="fa-solid fa-bars" style="color: rgba(245, 245, 245, 0.5);"></i>
 
         </div>
-        <div class="cards" style="margin-top: 10px;">
-
+        <div class="cards" style="margin-top: 10px;" id="cardsContainer">
             {{#if projects}}
             {{#each projects}}
             <div class="card">
@@ -60,19 +60,23 @@
 
     </div>
 
+    <script>const userIdFront = "{{ userId }}"; const tokenFront = "{{token}}"</script>
     <div class="modalBackground" id="modalNewProject"
         style="width: 100%; height:100%; background-color:rgba(0, 0, 0, 0.542); z-index:50; position: fixed; top:0; left:0; display:none">
-        <form id="projectForm" action="/home/createProject" method="post" enctype="multipart/form-data">
-            <div class="modalNewProject" id="modalContent">
-                <input type="text" id="inputNewProject" name="projectName" placeholder="Project Name...">
-                <input type="file" id="Song" name="Song" accept="audio/mp3">
-                <!-- Agrega otros campos de entrada para los datos del proyecto si es necesario -->
-                <button type="submit" id="createPButton" style="display: flex; cursor: pointer; width: 100%; align-items: center; justify-content: center; background-color:#fef27a; border: none; border-radius: 5px; color: black;">
-                    <i class="fa-solid fa-plus" style="margin-right: 5px;"></i>
-                    Create Project...
-                </button>
-            </div>
-        </form>
+        <div class="modalContent">
+            <form id="projectForm" method="post" enctype="multipart/form-data">
+                <div class="modalNewProject">
+                    <input type="text" id="inputNewProject" name="projectName" placeholder="Project Name..."
+                        style="border: none;">
+                    <button type="submit" id="createPButton"
+                        style="display: flex; cursor: pointer; width: 100%; align-items: center; justify-content: center; background-color:#fef27a; border: none; border-radius: 5px; color: black;">
+                        <i class="fa-solid fa-plus" style="margin-right: 5px;"></i>
+                        Create Project...
+                    </button>
+                </div>
+            </form>
+        </div>
+
     </div>
 
 

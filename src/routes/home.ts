@@ -15,7 +15,7 @@ router.post('/deleteProject', projectController.deleteProjectByMail);
 
 router.post('/updateProject', projectController.updateProjectByMail);
 
-router.post('/createProject', uploadMp3.single('Song'), projectController.createProject);
+router.post('/createProject', projectController.createProject);
 
 router.get('', authMiddlweare, (req, res) => {
     const token: string | undefined = req.query.t as string;
@@ -31,9 +31,9 @@ router.get('', authMiddlweare, (req, res) => {
                     email: response1.email
                 }).then( projects =>{
                     if(response1.image){
-                        res.render('projects', { layout: 'sidebarmenu', profileImg: response1.image, userName: response1.name, projects : projects.data});
+                        res.render('projects', { layout: 'sidebarmenu', profileImg: response1.image, userName: response1.name, projects : projects.data, userId: response1.email, token: token});
                     }else{
-                        res.render('projects', { layout: 'sidebarmenu', profileImg: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', userName: response1.name, projects : projects.data });
+                        res.render('projects', { layout: 'sidebarmenu', profileImg: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', userName: response1.name, projects : projects.data, userId: response1.email, token: token });
                     }
                 })
             })

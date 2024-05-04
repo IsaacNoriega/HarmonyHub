@@ -27,16 +27,12 @@ const uploadMp3 = multer({
 class ProjectController{
 
     createProject(req: Request, res: Response): void{
-        const mp3 = req.file.originalname;
-        const song = `https://harmonymp3.s3.us-east-2.amazonaws.com/${mp3}`
-        const token = req.cookies.token
         const data = {
-            projectName : req.body.projectName || 'Default',
-            userId : req.cookies.email,
-            songs : [song]
+            projectName : req.body.projectName,
+            userId : req.body.userId,
         };
         Project.create(data).then(response =>{
-            res.status(ResponseStatus.SUCCESS).redirect(`/home?t=${token}`); 
+            res.status(ResponseStatus.SUCCESS).send('Project created '+response); 
         }).catch(e =>{
             res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong');  
         })

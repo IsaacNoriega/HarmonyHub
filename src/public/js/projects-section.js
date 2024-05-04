@@ -43,3 +43,56 @@ document.addEventListener('click', function (event) {
   }
 });
 
+
+//crear nuevo proyecto
+document.getElementById('projectForm').addEventListener('submit', function (event) {
+
+  event.preventDefault();
+
+  const projectName = document.getElementById('inputNewProject').value;
+  // Esto imprimirá el valor del userId que viene del contexto de Handlebars
+
+  const data = {
+    projectName: projectName,
+    userId: userIdFront
+  };
+
+  // Enviar solicitud POST utilizando AJAX
+  $.ajax({
+    url: 'http://localhost:3000/home/createProject',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(data),
+    success: (response) => {
+      const cardsContainer = document.getElementById('cardsContainer');
+      const child = cardsContainer.firstElementChild;
+      const newDiv = document.createElement('div');
+      newDiv.classList.add('card');
+      newDiv.innerHTML = `
+          <div class="card-image">
+            <img src="https://i.pinimg.com/564x/47/5b/72/475b72acb3f65dd57e938e4eab8ac895.jpg" alt="">
+          </div>
+          <div class="card-description">
+            <p class="text-title">${data.projectName}</p>
+            <p class="text-body">By ${data.userId}</p>
+      `;
+
+      if (child.classList.contains('noProjects')) {
+        cardsContainer.innerText = '';
+        cardsContainer.appendChild(newDiv);
+      } else {
+        cardsContainer.appendChild(newDiv);
+      }
+
+
+    },
+    error: function (xhr, status, error) {
+      // Manejar errores de la solicitud
+      console.error('Error en la solicitud:', status, error);
+    }
+  });
+
+});
+
+
+
