@@ -3,6 +3,9 @@ import authMiddlweare from '../middlewares/auth.middleware';
 import User from "../models/user.model";
 import jwt  from "jsonwebtoken";
 import Project from '../models/projects.model'
+import uploadMp3 from "../middlewares/upload-s3-mp3";
+import projectController from "../controllers/project.controller";
+
 const router = Router();
 
 router.get('', (req, res) => {
@@ -24,5 +27,6 @@ router.get('', (req, res) => {
     
 });
 
+router.post('/uploadSong', uploadMp3.single('Song'), projectController.uploadSong)
 
 export default router;
