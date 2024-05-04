@@ -304,7 +304,7 @@
     height: 35px;
     margin-left: 1%;
     margin-right: 1%;
-    background-color: rgba(95, 106, 115, 0.199);
+    background-color:var(--button-color);
     margin-top: 2%;
     border-radius: 5px;
     color: white;
@@ -343,3 +343,52 @@
 #modalNewProject.hidden #modalContent {
     animation: shrinkOut 0.3s ease; /* Aplicar la animación de salida */
 }
+
+.modalNewProject{
+    height: auto; /* Cambia la altura a automático para que se ajuste al contenido */
+    width: 50%;
+    max-width: 400px; /* Establece un ancho máximo */
+    position: fixed;
+    background-color: var(--primary-color-dark);
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra horizontal y verticalmente */
+    z-index: 9999;
+    border-radius: 10px;
+    padding: 20px; /* Agrega un espacio alrededor del contenido */
+    box-sizing: border-box; /* Incluye el relleno en el ancho y alto */
+}
+
+#inputNewProject {
+    width: 100%;
+    background-color: var(--primary-color-dark);
+    height: 40px;
+    border: 1px solid var(--gray-dark); /* Agrega un borde */
+    border-radius: 5px;
+    padding: 5px 10px; /* Agrega un espacio de relleno */
+    font-size: 16px;
+    margin-bottom: 20px; /* Agrega espacio inferior */
+    color: white;
+}
+
+#createPButton {
+    width: 100%;
+    height: 40px;
+    background-color:#fef27a; /* Usa el color de botón */
+    margin-top: 10px; /* Agrega espacio superior */
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#createPButton:hover {
+    background-color: #dccd23; /* Cambia el color al pasar el mouse */
+}
+
+#createPButton i {
+    margin-right: 5px; /* Agrega espacio entre el icono y el texto */
+}
+
