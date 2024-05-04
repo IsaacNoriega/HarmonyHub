@@ -40,11 +40,6 @@ router.post("/uploadImage", uploadImage.single('Foto'), userController.userImage
 router.post("/uploadName",userController.changeUsername);
 router.post("/uploadPassword",userController.changePassword);
 
-router.post("/uploadSong", uploadMp3.single('Song'), (req, res) => {
-    console.log("Archivo MP3 cargado con éxito:", req.file);
-    res.send('Proyect Uploaded')
-    // Aquí puedes enviar una respuesta al cliente
-});
 
 router.get("/signup", (req, res) => {
     res.render('register');
