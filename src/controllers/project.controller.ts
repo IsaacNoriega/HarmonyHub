@@ -82,7 +82,28 @@ class ProjectController{
             userId : req.body.userId,
         }
         const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
+        res.cookie('tokenProject' , token , { httpOnly: true })
         res.json({ token: token });
+    }
+
+    uploadSong( req : Request , res : Response){
+        const projectToken = req.cookies.tokenProject
+        const decodedToken = jwt.verify(projectToken, process.env.TOKEN_KEY);
+        const newSong = {
+            name : req.body.name,
+            url : `https://harmonymp3.s3.us-east-2.amazonaws.com/${req.file.originalname}`
+        }
+        console.log(req.file)
+
+        Project.findOneAndUpdate( { projectName : decodedToken['projectName'] , userId : decodedToken['userId']}, 
+            {$push : {songs : newSong}}
+        ).then(response => {
+            
+            res.status(200).redirect(`/project?t=${projectToken}`)
+        }).catch( e => {
+            res.status(400).send('Something went wrong')
+        })
+        
     }
 }
 
