@@ -78,4 +78,19 @@ dropzoneBox.addEventListener("reset", (e) => {
 });
 
 
+// Obtener todas las pistas de audio
+const audioPlayers = document.querySelectorAll('.audioPlayer');
+
+// Para cada pista de audio, obtenemos la duración y la mostramos en el elemento span correspondiente
+audioPlayers.forEach(audio => {
+    audio.addEventListener('loadedmetadata', () => {
+        const duration = Math.floor(audio.duration); // Duración en segundos
+        const minutes = Math.floor(duration / 60);
+        const seconds = duration % 60;
+        const formattedDuration = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        const trackContainer = audio.closest('.track');
+        const durationSpan = trackContainer.querySelector('.duration');
+        durationSpan.textContent = formattedDuration;
+    });
+});
 
