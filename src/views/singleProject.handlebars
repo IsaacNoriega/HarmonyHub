@@ -97,21 +97,22 @@
             </label>
         </div>
     </div>
-<div class="tracksDaD">
-    <div class="tracks" style="margin-top: 2%;">
-        {{#each songs}}
-        <div class="track" onclick="changeBackground(this)">
-            <div class="trackInfo" style="display: flex;">
-                <p id="numberTrack">{{ @index}}</p>
-                <p>Cancion {{@index}}</p>
-                <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
+
+    <div class="tracksDaD">
+        <div class="tracks" style="margin-top: 2%;">
+            {{#each songs}}
+            <div class="track" onclick="changeBackground(this)">
+                <div class="trackInfo" style="display: flex;">
+                    <p id="numberTrack">{{ @index }}</p>
+                    <p>{{ name }}</p>
+                    <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
+                </div>
+                <audio class="audioPlayer" src="{{ url }}"></audio>
+                <span class="duration"></span> <!-- Agrega este span para mostrar la duración -->
             </div>
-            <p>URL {{@index}}</p>
-            <audio class="audioPlayer" src="{{@index}}"></audio>
+            {{/each}}
         </div>
-        {{/each}}
     </div>
-</div>
 
 </div>
 
