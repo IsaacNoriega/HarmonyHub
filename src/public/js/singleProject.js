@@ -94,3 +94,21 @@ audioPlayers.forEach(audio => {
     });
 });
 
+// Obtener todas las pistas de audio
+const tracks = document.querySelectorAll('.track');
+
+// Agregar un evento de clic a cada pista
+tracks.forEach(track => {
+    track.addEventListener('click', () => {
+        // Obtener el elemento de audio dentro de la pista
+        const audio = track.querySelector('audio');
+        
+        // Verificar si el audio está pausado o en reproducción y actuar en consecuencia
+        if (audio.paused) {
+            audio.play(); // Si está pausado, reproduzca el audio
+        } else {
+            audio.pause(); // Si está reproduciendo, pausa el audio
+        }
+    });
+});
+

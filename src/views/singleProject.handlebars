@@ -105,10 +105,10 @@
                 <div class="trackInfo" style="display: flex;">
                     <p id="numberTrack">{{ @index }}</p>
                     <p>{{ name }}</p>
+                    <span class="duration"></span> <!-- Agrega este span para mostrar la duración -->
                     <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
                 </div>
                 <audio class="audioPlayer" src="{{ url }}"></audio>
-                <span class="duration"></span> <!-- Agrega este span para mostrar la duración -->
             </div>
             {{/each}}
         </div>

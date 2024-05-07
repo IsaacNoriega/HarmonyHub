@@ -156,6 +156,9 @@
     color: white;
     transition: background-color 0.3s ease;
     height: 60px; /* Establecer un alto fijo */
+    justify-content: center;
+    align-items: center;
+
 }
 
 /* Estilos para la información de la pista */
