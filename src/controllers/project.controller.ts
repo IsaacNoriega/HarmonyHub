@@ -7,7 +7,7 @@ import{ URLSearchParams }  from 'url';
 import response from "../utils/response";
 import { json } from "stream/consumers";
 import multer from "multer";
-import { MP3File } from "../types/fileMp3";
+import { File } from "../types/fileImage";
 
 // Middleware para archivos MP3
 const storageForMP3 = multer.diskStorage({
@@ -30,7 +30,9 @@ class ProjectController{
         const data = {
             projectName : req.body.projectName,
             userId : req.body.userId,
+            projectImage : `https://harmonyhub.s3.us-east-2.amazonaws.com/${req.file.originalname}`
         };
+
         Project.create(data).then(response =>{
             res.status(ResponseStatus.SUCCESS).send('Project created '+response); 
         }).catch(e =>{
