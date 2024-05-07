@@ -564,3 +564,21 @@
     width: 55px;
     height: auto;
 }
+
+#name {
+    /* Agrega aquí los estilos que quieras aplicar */
+    border: 1px solid #ccc; /* Por ejemplo, un borde gris */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 4px; /* Borde redondeado */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 500px;
+}
+
+/* Estilo para todos los inputs dentro del formulario */
+.dropzone-box input[type="text"] {
+    /* Aplica estilos similares al input con ID "name" */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}

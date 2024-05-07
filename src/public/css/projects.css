@@ -364,7 +364,6 @@
     background-color: transparent;
     height: 40px;
     border: none;
-    border-radius: 5px;
     padding: 5px 10px; /* Agrega un espacio de relleno */
     font-size: 16px;
     color: white;
@@ -375,7 +374,7 @@
     height: 40px;
     background-color:#fef27a; /* Usa el color de botón */
     margin-top: 10px; /* Agrega espacio superior */
-    border-radius: 5px;
+    border: none;
     color: black;
     display: flex;
     align-items: center;
@@ -384,10 +383,21 @@
 }
 
 #createPButton:hover {
-    background-color: #dccd23; /* Cambia el color al pasar el mouse */
+    background-color: #f6e74a; /* Cambia el color al pasar el mouse */
 }
 
 #createPButton i {
     margin-right: 5px; /* Agrega espacio entre el icono y el texto */
+}
+
+#Foto {
+    width: 100%;
+    background-color: transparent;
+    height: 40px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px; /* Ajusta el margen superior */
 }
 

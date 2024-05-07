@@ -65,6 +65,7 @@ hr {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
+    border-radius: 15px;
 }
 
 .config-container button {
@@ -72,9 +73,36 @@ hr {
     color: white;
     padding: 10px 15px;
     border: none;
+    border-radius: 12px;
     cursor: pointer;
 }
 
 .config-container button:hover {
     background-color: #4cae4c;
+}
+
+/* Estilos para la configuración del perfil */
+.logout {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 120px; /* Ajusta la altura según sea necesario */
+}
+
+.logout button{
+    background-color: red;
+    border-radius: 18px;
+    color: white;
+    font-size: medium ;
+    font-weight: bold;
+    border: none;
+    width: 100px;
+    height: 50px;
+}
+
+.logout button:hover{
+    background-color: rgb(205, 6, 6);
 }
