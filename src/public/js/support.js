@@ -42,12 +42,6 @@ socket.on('chat message', (data) => {
     newMessage(data);
 });
 
-// Manejar el evento 'userLeft' del servidor
-socket.on('userLeft', (data) => {
-    // Llamar a la función userLeftMessage con el nombre de usuario recibido del servidor
-    userLeftMessage(data.user);
-});
-
 // Función para mostrar un mensaje cuando un nuevo usuario se une al chat
 function newUserMessage(name) {
     const p = document.createElement('p');
@@ -56,13 +50,6 @@ function newUserMessage(name) {
     messages.append(p);
 }
 
-// Función para mostrar un mensaje cuando un usuario deja el chat
-function userLeftMessage(name) {
-    const p = document.createElement('p');
-    p.className = 'user-left';
-    p.innerText = `${name} left the chat`;
-    messages.append(p);
-}
 
 // Función para mostrar un nuevo mensaje en el chat
 function newMessage(data, mine) {
@@ -109,7 +96,4 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
     input.value = '';
 });
 
-// Mostrar un mensaje de confirmación al intentar salir de la página
-window.onbeforeunload = (event) => {
-    return 'Are you sure you want to leave?';
-};
+    
