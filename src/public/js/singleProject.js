@@ -89,11 +89,47 @@ dropzoneBox.addEventListener("reset", (e) => {
 });
 
 
+<<<<<<< HEAD
 document.addEventListener('click', function (event) {
   const modalProject = document.getElementById('modalNewProject');
   if (modalVisible && !modalProject.contains(event.target)) {
     modalVisible = false;
     modalProject.classList.add('hidden'); // Agregar la clase hidden para ocultar el modal con animación
+=======
+// Obtener todas las pistas de audio
+const audioPlayers = document.querySelectorAll('.audioPlayer');
+
+// Para cada pista de audio, obtenemos la duración y la mostramos en el elemento span correspondiente
+audioPlayers.forEach(audio => {
+    audio.addEventListener('loadedmetadata', () => {
+        const duration = Math.floor(audio.duration); // Duración en segundos
+        const minutes = Math.floor(duration / 60);
+        const seconds = duration % 60;
+        const formattedDuration = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        const trackContainer = audio.closest('.track');
+        const durationSpan = trackContainer.querySelector('.duration');
+        durationSpan.textContent = formattedDuration;
+    });
+});
+
+// Obtener todas las pistas de audio
+const tracks = document.querySelectorAll('.track');
+
+// Agregar un evento de clic a cada pista
+tracks.forEach(track => {
+    track.addEventListener('click', () => {
+        // Obtener el elemento de audio dentro de la pista
+        const audio = track.querySelector('audio');
+        
+        // Verificar si el audio está pausado o en reproducción y actuar en consecuencia
+        if (audio.paused) {
+            audio.play(); // Si está pausado, reproduzca el audio
+        } else {
+            audio.pause(); // Si está reproduciendo, pausa el audio
+        }
+    });
+});
+>>>>>>> 7f72d2d2798f41e75e9ed0ad3726b5391b3fb293
 
     // Esperar a que termine la animación de salida antes de ocultar realmente el modal
     setTimeout(() => {

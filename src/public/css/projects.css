@@ -364,7 +364,6 @@
     background-color: transparent;
     height: 40px;
     border: none;
-    border-radius: 5px;
     padding: 5px 10px; /* Agrega un espacio de relleno */
     font-size: 16px;
     color: white;
@@ -375,7 +374,7 @@
     height: 40px;
     background-color:#fef27a; /* Usa el color de botón */
     margin-top: 10px; /* Agrega espacio superior */
-    border-radius: 5px;
+    border: none;
     color: black;
     display: flex;
     align-items: center;
@@ -384,10 +383,81 @@
 }
 
 #createPButton:hover {
-    background-color: #dccd23; /* Cambia el color al pasar el mouse */
+    background-color: #f6e74a; /* Cambia el color al pasar el mouse */
 }
 
 #createPButton i {
     margin-right: 5px; /* Agrega espacio entre el icono y el texto */
 }
+
+#Foto {
+    width: 100%;
+    background-color: transparent;
+    height: 40px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px; /* Ajusta el margen superior */
+}
+
+
+
+
+/* Aplicar la animación de salida cuando el modal se oculta */
+#modalDeleteProject.hidden #modalContent {
+    animation: shrinkOut 0.3s ease; /* Aplicar la animación de salida */
+}
+.modalDeleteProject{
+    color: whitesmoke;
+    height: auto; /* Cambia la altura a automático para que se ajuste al contenido */
+    width: 50%;
+    max-width: 400px; /* Establece un ancho máximo */
+    position: fixed;
+    background-color: var(--primary-color-dark);
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra horizontal y verticalmente */
+    z-index: 9999;
+    border-radius: 10px;
+    padding: 20px; /* Agrega un espacio alrededor del contenido */
+    box-sizing: border-box; /* Incluye el relleno en el ancho y alto */
+}
+
+#projectNameToDelete {
+    width: 100%;
+    background-color: transparent;
+    height: 40px;
+    border: none;
+    padding: 5px 10px; /* Agrega un espacio de relleno */
+    font-size: 16px;
+    color: white;
+}
+
+#deleteButton {
+    width: 100%;
+    height: 40px;
+    background-color:#fef27a; /* Usa el color de botón */
+    margin-top: 10px; /* Agrega espacio superior */
+    border: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#deleteButton:hover {
+    background-color: #f6e74a; /* Cambia el color al pasar el mouse */
+}
+
+#deleteButton i {
+    margin-right: 5px; /* Agrega espacio entre el icono y el texto */
+}
+
+
+
+
+
+
 

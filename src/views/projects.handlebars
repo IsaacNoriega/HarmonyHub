@@ -10,6 +10,11 @@
                 <p style="color: rgba(245, 245, 245, 0.5);" id="textplus">New</p>
             </div>
 
+            <div class="deleteProjectButton deleteProject" style="display: flex; margin-left: 1%; cursor:pointer;">
+                <i class="fa-solid fa-trash-alt" style="color: rgba(245, 245, 245, 0.5);" id="iconplus"></i>
+                <p style="color: rgba(245, 245, 245, 0.5);" id="textplus">Delete</p>
+            </div>
+
             <div class="group-bar">
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="icon4">
                     <g>
@@ -68,8 +73,8 @@
                 <div class="modalNewProject">
                     <input type="text" id="inputNewProject" name="projectName" placeholder="Project Name..."
                         style="border: none;">
-                    <button type="submit" id="createPButton"
-                        style="display: flex; cursor: pointer; width: 100%; align-items: center; justify-content: center; background-color:#fef27a; border: none; border-radius: 5px; color: black;">
+                    <input type="file" id="Foto" name="Foto" style="border: none; " accept="image/**">
+                    <button type="submit" id="createPButton">
                         <i class="fa-solid fa-plus" style="margin-right: 5px;"></i>
                         Create Project...
                     </button>
@@ -78,6 +83,25 @@
         </div>
 
     </div>
+
+    <div class="modalBackground" id="modalDeleteProject"
+        style="width: 100%; height:100%; background-color:rgba(0, 0, 0, 0.542); z-index:50; position: fixed; top:0; left:0; display:none">
+        <div class="modalContent">
+            <form id="deleteProjectForm" method="post">
+                <div class="modalDeleteProject">
+                    <p>Are you sure you want to delete project:</p>
+                    <input type="text" id="projectNameToDelete" name="projectNameToDelete" placeholder="Project Name..."
+                        style="border: none;">
+                    <button type="submit" id="deleteButton">
+                        <i class="fa-solid fa-trash-alt" style="margin-right: 5px;"></i>
+                        Delete Project...
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 
 
 

@@ -34,6 +34,15 @@ export default function setupSocket(server) {
                 case '3':
                     responseMessage = response.OPT3;
                     break;
+                case 'correo':
+                    responseMessage = response.EMAIL
+                    break;
+                case 'contraseña':
+                    responseMessage = response.PASSWORD
+                    break;
+                case 'foto':
+                    responseMessage =response.IMAGE
+                    break;
                 default:
                     responseMessage = response.ERROR;
                     break;

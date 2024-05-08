@@ -7,7 +7,7 @@ import{ URLSearchParams }  from 'url';
 import response from "../utils/response";
 import { json } from "stream/consumers";
 import multer from "multer";
-import { MP3File } from "../types/fileMp3";
+import { File } from "../types/fileImage";
 
 // Middleware para archivos MP3
 const storageForMP3 = multer.diskStorage({
@@ -30,7 +30,9 @@ class ProjectController{
         const data = {
             projectName : req.body.projectName,
             userId : req.body.userId,
+            projectImage : `https://harmonyhub.s3.us-east-2.amazonaws.com/${req.file.originalname}`
         };
+
         Project.create(data).then(response =>{
             res.status(ResponseStatus.SUCCESS).send('Project created '+response); 
         }).catch(e =>{
@@ -38,16 +40,23 @@ class ProjectController{
         })
     }
 
-    deleteProjectByMail(req: Request, res: Response): void{
+    deleteProjectByMail(req: Request, res: Response): void {
         const email = req.body.email;
+        const projectName = req.body.projectName; // Corregí el acceso a req.body.email a req.body.projectName
         Project.deleteOne({
-            userId : email
-        }).then(response =>{
-            res.status(ResponseStatus.SUCCESS).send('Project Deleted: '+ response); 
-        }).catch(e =>{
-            res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong'); 
-        })
+            userId: email,
+            projectName: projectName // Agregué la condición del nombre del proyecto
+        }).then(response => {
+            if (response.deletedCount > 0) {
+                res.redirect(`/home`); // Cambié la respuesta para indicar que el proyecto se eliminó correctamente
+            } else {
+                res.status(ResponseStatus.NOT_FOUND).send('Project Not Found'); // Agregué una respuesta si el proyecto no se encuentra
+            }
+        }).catch(e => {
+            res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong');
+        });
     }
+    
 
     getProjectsByUserMail(req: Request, res: Response){
         const email = req.body.email;

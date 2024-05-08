@@ -151,25 +151,47 @@
 
 .track {
     background: transparent;
-    /* Borde redondeado */
     padding: 12px;
-    /* Espacio interior */
     margin-bottom: 10px;
     color: white;
     transition: background-color 0.3s ease;
+    height: 60px; /* Establecer un alto fijo */
+    justify-content: center;
+    align-items: center;
 
 }
 
-.track #numberTrack {
+/* Estilos para la información de la pista */
+.track .trackInfo {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el número de pista */
+.track .trackInfo #numberTrack {
     font-size: smaller;
     color: rgba(245, 245, 245, 0.5);
     margin-right: 1%;
     margin-top: 0.2%;
 }
 
-.track #moreInfoTrack {
-    margin-left: 90%;
+/* Estilos para el icono de información */
+.track .trackInfo #moreInfoTrack {
+    margin-left: auto; /* Mover el icono de información al final */
 }
+
+/* Estilos para la duración de la pista */
+.track .duration {
+    font-size: smaller;
+    color: rgba(245, 245, 245, 0.5);
+    margin-left: auto;
+}
+
+
+.track audio.audioPlayer {
+    height: 100%; /* Hacer que el reproductor de audio tenga la misma altura que el elemento track */
+}
+
 
 #trackDuration {
     font-size: smaller;
@@ -193,8 +215,6 @@
     background-color: rgba(255, 255, 255, 0.2);
     /* Nuevo color de fondo cuando se hace clic */
 }
-
-/*reproductor de mp3*/
 
 .audio-player {
     display: flex;
@@ -548,6 +568,7 @@
     height: auto;
 }
 
+<<<<<<< HEAD
 .noProjects {
     width: 98%;
     height: 380px;
@@ -605,4 +626,22 @@
 
 .acceptButton:hover {
     transition-duration: .2s;
+=======
+#name {
+    /* Agrega aquí los estilos que quieras aplicar */
+    border: 1px solid #ccc; /* Por ejemplo, un borde gris */
+    padding: 8px; /* Espaciado interno */
+    border-radius: 4px; /* Borde redondeado */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 500px;
+}
+
+/* Estilo para todos los inputs dentro del formulario */
+.dropzone-box input[type="text"] {
+    /* Aplica estilos similares al input con ID "name" */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+>>>>>>> 7f72d2d2798f41e75e9ed0ad3726b5391b3fb293
 }
