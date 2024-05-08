@@ -32,6 +32,7 @@ hr {
 
 .imageProfile img {
     max-width: 150px;
+    max-height: 150px; /* Asegura que la imagen sea cuadrada */
     border-radius: 50%;
 }
 
