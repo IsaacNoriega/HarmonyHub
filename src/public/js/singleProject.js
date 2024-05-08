@@ -9,17 +9,17 @@ function changeBackground(track) {
     });
 }
 
-document.getElementById("newTrack").addEventListener("click", function () {
-    var form = document.querySelector(".dropzone-box");
-    var overlay = document.getElementById("overlay");
-    form.style.display = "block"; // Mostrar el formulario
-    overlay.classList.add("visible"); 
-    let a = document.getElementsByClassName('visible');
-    a[0].addEventListener('click',function(){
-        form.style.display = "none";
-        overlay.classList.remove('visible');
-    })
-});
+// document.getElementById("newTrack").addEventListener("click", function () {
+//     var form = document.querySelector(".dropzone-box");
+//     var overlay = document.getElementById("overlay");
+//     form.style.display = "block"; // Mostrar el formulario
+//     overlay.classList.add("visible"); 
+//     let a = document.getElementsByClassName('visible');
+//     a[0].addEventListener('click',function(){
+//         form.style.display = "none";
+//         overlay.classList.remove('visible');
+//     })
+// });
 
 document.getElementById("addTrack").addEventListener("click", function () {
   var form = document.querySelector(".dropzone-box");
