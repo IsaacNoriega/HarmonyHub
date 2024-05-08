@@ -104,7 +104,7 @@ document.getElementById('projectForm').addEventListener('submit', function (even
 
 function redirectProject(projectName, userId) {
   $.ajax({
-    url: 'Https://HarmonyHub-2-a0p0.onrender.com/home/getProjectToken',
+    url: 'https://HarmonyHub-2-a0p0.onrender.com/home/getProjectToken',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({
