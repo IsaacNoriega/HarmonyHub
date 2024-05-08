@@ -42,7 +42,9 @@ app.use(passport.session());
 app.use('/assets',express.static(path.join(__dirname,'public')));
 app.use(routes);
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://HarmonyHub-2-a0p0.onrender.com'
+  }));
 
 
 //Swagger
