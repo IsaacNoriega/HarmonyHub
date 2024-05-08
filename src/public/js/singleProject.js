@@ -89,6 +89,8 @@ dropzoneBox.addEventListener("reset", (e) => {
 });
 
 
+let modalVisible = false; // Define la variable modalVisible al principio del script
+
 document.addEventListener('click', function (event) {
   const modalProject = document.getElementById('modalNewProject');
   if (modalVisible && !modalProject.contains(event.target)) {
