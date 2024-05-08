@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="audio-player">
+    <div class="audio-player" style="display: none;">
         <div class="imgPlayer">
             <img src="https://m.media-amazon.com/images/I/61hw9WloObL._UF1000,1000_QL80_.jpg" alt="">
         </div>
@@ -99,19 +99,34 @@
     </div>
 <div class="tracksDaD">
     <div class="tracks" style="margin-top: 2%;">
-        {{#each songs}}
-        <div class="track" onclick="changeBackground(this)">
-            <div class="trackInfo" style="display: flex;">
-                <p id="numberTrack">{{ @index}}</p>
-                <p>Cancion {{@index}}</p>
-                <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
+        {{#if songs}}
+            {{#each songs}}
+                <div class="track" onclick="changeBackground(this)">
+                    <div class="trackInfo" style="display: flex;">
+                        <p id="numberTrack">{{ @index}}</p>
+                        <p>Cancion {{@index}}</p>
+                        <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
+                    </div>
+                    <p>URL {{@index}}</p>
+                    <audio class="audioPlayer" src="{{@index}}"></audio>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="noProjects">
+                <iframe src="https://lottie.host/embed/b21b435e-4675-4cbe-946d-e70d949ef700/ZzAlMXyISO.json"
+                style="border: 0px; margin-top: -5%; margin-left: -1%;"></iframe>
+                <p class="cookieHeading">Start uploading your music!.</p>
+                <p class="cookieDescription">No tracks yet? Let's upload something amazing together!
+                    share your creativity with the world.</p>
+
+                <div class="buttonContainer">
+                    <button class="acceptButton addProject" id="addTrack">Add Track</button>
+                </div>
             </div>
-            <p>URL {{@index}}</p>
-            <audio class="audioPlayer" src="{{@index}}"></audio>
-        </div>
-        {{/each}}
+        {{/if}}
     </div>
 </div>
+
 
 </div>
 
