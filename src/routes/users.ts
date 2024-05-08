@@ -37,8 +37,58 @@ const router = Router();
  *         description: Error uploading the image
  */
 router.post("/uploadImage", uploadImage.single('Foto'), userController.userImage);
-router.post("/uploadName",userController.changeUsername);
-router.post("/uploadPassword",userController.changePassword);
+
+
+
+/**
+ * @swagger
+ * /uploadName:
+ *   post:
+ *     summary: Cambiar nombre de usuario
+ *     description: Cambia el nombre de usuario del usuario.
+ *     tags : [User]
+ *     parameters:
+ *       - in: formData
+ *         name: nuevoNombre
+ *         description: Nuevo nombre de usuario
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Nombre de usuario cambiado exitosamente.
+ *       400:
+ *         description: Error al intentar cambiar el nombre de usuario.
+ */
+router.post("/uploadName", userController.changeUsername);
+
+
+
+/**
+ * @swagger
+ * /uploadPassword:
+ *   post:
+ *     summary: Cambiar contraseña de usuario
+ *     description: Cambia la contraseña del usuario.
+ *     tags : [User]
+ *     parameters:
+ *       - in: formData
+ *         name: nuevaContraseña
+ *         description: Nueva contraseña del usuario
+ *         required: true
+ *         type: string
+ *       - in: formData
+ *         name: contraseñaActual
+ *         description: Contraseña actual del usuario
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Contraseña cambiada exitosamente.
+ *       400:
+ *         description: Error al intentar cambiar la contraseña.
+ */
+router.post("/uploadPassword", userController.changePassword);
+
 
 
 router.get("/signup", (req, res) => {

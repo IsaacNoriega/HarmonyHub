@@ -12,11 +12,77 @@ const router = Router();
 
 router.post('', projectController.getProjectsByUserMail);
 
+
+/**
+ * @swagger
+ * /home/deleteProject:
+ *   post:
+ *     summary: Eliminar proyecto por correo electrónico
+ *     description: Elimina un proyecto asociado al correo electrónico del usuario.
+ *     tags: [Project]
+ *     parameters:
+ *       - in: formData
+ *         name: correoElectronico
+ *         description: Correo electrónico del usuario
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Proyecto eliminado exitosamente.
+ *       400:
+ *         description: Error al intentar eliminar el proyecto.
+ */
 router.post('/deleteProject', projectController.deleteProjectByMail);
 
+/**
+ * @swagger
+ * /home/updateProject:
+ *   post:
+ *     summary: Actualizar proyecto por correo electrónico
+ *     description: Actualiza un proyecto asociado al correo electrónico del usuario.
+ *     tags: [Project]
+ *     parameters:
+ *       - in: formData
+ *         name: correoElectronico
+ *         description: Correo electrónico del usuario
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Proyecto actualizado exitosamente.
+ *       400:
+ *         description: Error al intentar actualizar el proyecto.
+ */
 router.post('/updateProject', projectController.updateProjectByMail);
 
-router.post('/createProject', upload.single('Foto') , projectController.createProject);
+/**
+ * @swagger
+ * /home/createProject:
+ *   post:
+ *     summary: Crear proyecto
+ *     description: Crea un nuevo proyecto.
+ *     tags: [Project]
+ *     consumes:
+ *       - multipart/form-data
+ *     parameters:
+ *       - in: formData
+ *         name: Foto
+ *         description: Foto del proyecto
+ *         required: true
+ *         type: file
+ *       - in: formData
+ *         name: correoElectronico
+ *         description: Correo electrónico del usuario
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Proyecto creado exitosamente.
+ *       400:
+ *         description: Error al intentar crear el proyecto.
+ */
+router.post('/createProject', upload.single('Foto'), projectController.createProject);
+
 
 router.get('', authMiddlweare, (req, res) => {
     const token: string | undefined = req.query.t as string;

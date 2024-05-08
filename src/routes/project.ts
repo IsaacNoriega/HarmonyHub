@@ -8,6 +8,34 @@ import projectController from "../controllers/project.controller";
 
 const router = Router();
 
+
+
+
+
+
+
+/**
+ * @swagger
+ * /project:
+ *   get:
+ *     summary: Obtener información del proyecto
+ *     description: Devuelve información detallada sobre un proyecto.
+ *     tags : [Project]
+ *     parameters:
+ *       - in: query
+ *         name: t
+ *         description: Token de autenticación
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Información del proyecto obtenida exitosamente.
+ *       401:
+ *         description: Token inválido.
+ *       500:
+ *         description: Error al obtener información del proyecto.
+ */
 router.get('', (req, res) => {
     //obtener informacion del proyecto
     const token: string | undefined = req.query.t as string;
@@ -30,6 +58,30 @@ router.get('', (req, res) => {
     
 });
 
+
+
+
+/**
+ * @swagger
+ * /user/uploadSong:
+ *   post:
+ *     summary: Subir una canción al proyecto
+ *     description: Sube un archivo de canción al proyecto.
+ *     tags : [Project]
+ *     consumes:
+ *       - multipart/form-data
+ *     parameters:
+ *       - in: formData
+ *         name: Song
+ *         description: Archivo de la canción a subir
+ *         required: true
+ *         type: file
+ *     responses:
+ *       200:
+ *         description: Archivo de la canción subido exitosamente.
+ *       400:
+ *         description: Error al intentar subir el archivo de la canción.
+ */
 router.post('/uploadSong', uploadMp3.single('Song'), projectController.uploadSong)
 
 export default router;
