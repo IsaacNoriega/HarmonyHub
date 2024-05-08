@@ -22,15 +22,17 @@ document.getElementById("newTrack").addEventListener("click", function () {
 });
 
 document.getElementById("addTrack").addEventListener("click", function () {
-    var form = document.querySelector(".dropzone-box");
-    var overlay = document.getElementById("overlay");
-    form.style.display = "block"; // Mostrar el formulario
-    overlay.classList.add("visible"); 
-    let a = document.getElementsByClassName('visible');
-    a[0].addEventListener('click',function(){
-        form.style.display = "none";
-        overlay.classList.remove('visible');
-    })
+  var form = document.querySelector(".dropzone-box");
+  var overlay = document.getElementById("overlay");
+  form.style.display = "block"; // Mostrar el formulario
+  overlay.classList.add("visible"); 
+  let a = document.getElementsByClassName('visible');
+  if (a[0]) { // Verifica si a[0] está definido antes de agregar el event listener
+      a[0].addEventListener('click',function(){
+          form.style.display = "none";
+          overlay.classList.remove('visible');
+      });
+  }
 });
 
 //dropzone
