@@ -104,11 +104,12 @@
                 <div class="track" onclick="changeBackground(this)">
                     <div class="trackInfo" style="display: flex;">
                         <p id="numberTrack">{{ @index}}</p>
-                        <p>Cancion {{@index}}</p>
+                        <p>{{ name }}</p>
+                                            <span class="duration"></span>
+
                         <i class="fa-solid fa-ellipsis-vertical" id="moreInfoTrack"></i>
                     </div>
-                    <p>URL {{@index}}</p>
-                    <audio class="audioPlayer" src="{{@index}}"></audio>
+                    <audio class="audioPlayer" src="{{url}}"></audio>
                 </div>
             {{/each}}
         {{else}}

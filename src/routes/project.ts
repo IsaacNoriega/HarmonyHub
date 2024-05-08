@@ -52,6 +52,7 @@ router.get('', (req, res) => {
             const songNames = response.songs.map(song => song.name); // Extraer solo los nombres de las canciones
             const songUrls = response.songs.map(song => song.url); // Extraer solo las URLs de las canciones
             const combinedSongs = songNames.map((name, index) => ({ name, url: songUrls[index] }));
+            console.log(combinedSongs)
             res.render('singleProject', { layout: 'sidebarmenu', projectImage : response.projectImage , projectName : decoded.projectName, userId: decoded.userId, songs : combinedSongs});
         })
     })

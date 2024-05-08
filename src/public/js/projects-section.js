@@ -104,7 +104,7 @@ document.getElementById('projectForm').addEventListener('submit', function (even
 
 function redirectProject(projectName, userId) {
   $.ajax({
-    url: 'http://localhost:3000/home/getProjectToken',
+    url: 'https://harmonyhub-2-a0p0.onrender.com/home/getProjectToken',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({
@@ -193,7 +193,7 @@ const email = cookies.email; // Obtener el valor de la cookie 'email'
   console.log('pjorctName',projectName)
 
   $.ajax({
-    url: 'http://localhost:3000/home/deleteProject',
+    url: 'https://harmonyhub-2-a0p0.onrender.com/home/deleteProject',
     type: 'POST',
     data: JSON.stringify({
       email : email,

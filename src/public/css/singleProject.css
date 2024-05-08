@@ -158,8 +158,9 @@
     height: 60px; /* Establecer un alto fijo */
     justify-content: center;
     align-items: center;
-
 }
+
+
 
 /* Estilos para la información de la pista */
 .track .trackInfo {
