@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/src",
     "dev": "nodemon src/index.ts",
-    "build": "rimraf dist && tsc && xcopy /s /y /i src\\views dist\\src\\views && xcopy /s /y /i src\\public dist\\src\\public "
+    "build": "rimraf dist && tsc && cp -r src/views dist/src/views && cp -r src/public dist/src/public"
   },
   "author": "",
   "license": "ISC",
