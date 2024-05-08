@@ -14,6 +14,8 @@ import swaggerConfig from '../swagger.config.json';
 import cookieParser from 'cookie-parser';
 import http from 'http'; // Importa http para crear un servidor
 import support from './controllers/support';
+const cors = require('cors');
+
 const port = process.env.PORT || 3000;
 const db_url = process.env.URLDB || 'mongodb+srv://mateeldemoledor:hola123@cluster0.ztfvxtn.mongodb.net/HarmonyHub?retryWrites=true&w=majority';
 
@@ -39,6 +41,8 @@ app.use(passport.session());
 
 app.use('/assets',express.static(path.join(__dirname,'public')));
 app.use(routes);
+
+app.use(cors());
 
 
 //Swagger
