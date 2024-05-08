@@ -63,7 +63,7 @@ document.getElementById('projectForm').addEventListener('submit', function (even
 
   // Enviar solicitud POST utilizando AJAX
   $.ajax({
-    url: 'https://harmonyhub-2-a0p0.onrender.com/home/createProject',
+    url: 'http://localhost:3000/home/createProject',
     type: 'POST',
     data: formData, // Enviar FormData en lugar de JSON
     contentType: false, // Importante: no configurar contentType cuando se usa FormData
@@ -104,7 +104,7 @@ document.getElementById('projectForm').addEventListener('submit', function (even
 
 function redirectProject(projectName, userId) {
   $.ajax({
-    url: 'https://harmonyhub-2-a0p0.onrender.com/home/getProjectToken',
+    url: 'http://localhost:3000/home/getProjectToken',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({
