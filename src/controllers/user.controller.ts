@@ -44,7 +44,7 @@ class UsersController {
                 console.log(dataToken);
                 console.log(process.env.TOKEN_KEY)
                 const token = jwt.sign(dataToken, process.env.TOKEN_KEY);
-                res.cookie('email', dataToken.email, { httpOnly: true });
+                res.cookie('email', dataToken.email);
                 res.cookie('username',dataToken.name);
                 res.redirect('/home?t='+token);
 

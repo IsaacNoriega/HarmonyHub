@@ -40,16 +40,23 @@ class ProjectController{
         })
     }
 
-    deleteProjectByMail(req: Request, res: Response): void{
+    deleteProjectByMail(req: Request, res: Response): void {
         const email = req.body.email;
+        const projectName = req.body.projectName; // Corregí el acceso a req.body.email a req.body.projectName
         Project.deleteOne({
-            userId : email
-        }).then(response =>{
-            res.status(ResponseStatus.SUCCESS).send('Project Deleted: '+ response); 
-        }).catch(e =>{
-            res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong'); 
-        })
+            userId: email,
+            projectName: projectName // Agregué la condición del nombre del proyecto
+        }).then(response => {
+            if (response.deletedCount > 0) {
+                res.redirect(`/home`); // Cambié la respuesta para indicar que el proyecto se eliminó correctamente
+            } else {
+                res.status(ResponseStatus.NOT_FOUND).send('Project Not Found'); // Agregué una respuesta si el proyecto no se encuentra
+            }
+        }).catch(e => {
+            res.status(ResponseStatus.BAD_REQUEST).send('Something went wrong');
+        });
     }
+    
 
     getProjectsByUserMail(req: Request, res: Response){
         const email = req.body.email;
